@@ -1,29 +1,32 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { avatar } from '../images/Cat.png';
+
 import styles from './styles';
-const Login = () => {
+const Login = ({ navigation }) => {
+    const handleNavigation = () => {
+        navigation.navigate('SubscriptionPlans');
+    };
     return (
         <View style={styles.container}>
             <View style={styles.logoContainer}>
-                <Image source={require('../images/Cat.png')} style={styles.logo} />
+                <Image source={require('../../images/Cat.png')} style={styles.logo} />
                 <Text style={styles.title}>HeartSync</Text>
                 <Text style={styles.subtitle}>Where Hearts Connect, Love Finds Its Sync.</Text>
             </View>
 
             <View style={styles.buttonsContainer}>
-                <TouchableOpacity style={[styles.button, styles.appleButton]}>
+                <TouchableOpacity style={[styles.button, styles.appleButton]} onPress={handleNavigation}>
                     <Icon name="apple" size={20} color="#fff" />
                     <Text style={styles.buttonText}>Continue with Apple</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={[styles.button, styles.facebookButton]}>
+                <TouchableOpacity style={[styles.button, styles.facebookButton]} onPress={handleNavigation}>
                     <Icon name="facebook" size={20} color="#fff" />
                     <Text style={styles.buttonText}>Continue with Facebook</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={[styles.button, styles.phoneButton]}>
+                <TouchableOpacity style={[styles.button, styles.phoneButton]} onPress={handleNavigation}>
                     <Icon name="phone" size={20} color="#fff" />
                     <Text style={styles.buttonText}>Use phone number</Text>
                 </TouchableOpacity>

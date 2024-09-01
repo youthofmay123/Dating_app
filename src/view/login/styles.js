@@ -2,7 +2,8 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 80,
+        paddingTop: 80,
+        height: '100%',
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 28,
-        fontWeight: '600',
+        fontWeight: '700',
         marginVertical: 10,
     },
     subtitle: {
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     },
     buttonsContainer: {
         width: '80%',
-        marginBottom: 30,
+        paddingBottom: 30,
     },
     button: {
         flexDirection: 'row',
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
     footer: {
         alignItems: 'center',
         paddingHorizontal: 20,
-        marginTop: 20,
+        paddingTop: 20,
     },
     footerText: {
         color: '#888',
