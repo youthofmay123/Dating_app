@@ -4,8 +4,8 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     header: {
-        height: 60,
-        backgroundColor: 'yellow',
+        height: 80,
+        paddingTop: 20,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -16,8 +16,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     footer: {
-        height: 50,
-        backgroundColor: 'blue',
+        height: 60,
         justifyContent: 'center',
         alignItems: 'center',
     },

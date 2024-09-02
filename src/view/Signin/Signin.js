@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
 import styles from './styles';
-const Login = ({ navigation }) => {
+
+const Signin = ({ navigation }) => {
     const handleNavigation = () => {
-        navigation.navigate('SubscriptionPlans');
+        navigation.navigate('Home'); // Điều hướng đến màn hình chứa TabNavigator
     };
+
     return (
         <View style={styles.container}>
             <View style={styles.logoContainer}>
@@ -43,4 +44,5 @@ const Login = ({ navigation }) => {
         </View>
     );
 };
-export default Login;
+
+export default Signin;
