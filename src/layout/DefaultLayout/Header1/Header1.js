@@ -8,21 +8,14 @@ const Header = () => {
         <View style={styles.header}>
             <View style={styles.left}>
                 <TouchableOpacity style={styles.iconButton}>
-                    <Icon name="bars" size={20} />
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.iconRefresh}>
-                    <Icon name="refresh" size={20} />
+                    <Icon name="bars" size={22} />
                 </TouchableOpacity>
             </View>
             <View style={styles.container}>
-                <Text style={styles.title}>HeartSync</Text>
-                <View style={styles.progressBar}>
-                    <View style={styles.progressBarLeft}></View>
-                    <View style={styles.progressBarRight}></View>
-                </View>
+                <View style={styles.progressBar}></View>
             </View>
             <TouchableOpacity style={styles.iconSliders}>
-                <Icon name="sliders" size={20} />
+                <Icon name="gear" size={23} />
             </TouchableOpacity>
         </View>
     );

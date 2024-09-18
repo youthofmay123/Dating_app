@@ -8,9 +8,12 @@ import Profile from './Profile';
 import Notify from './Notify';
 import Chat from './Chat';
 import Signin from './Signin';
-import Header from '../layout/DefaultLayout/Header/Header';
+import Header1 from '../layout/DefaultLayout/Header1/Header1';
+import Header2 from '../layout/DefaultLayout/Header2/Header2';
+import Header3 from '../layout/DefaultLayout/Header3/Header3';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import color from '../components/color/color';
+import EditProfile from './EditProfiles/EditProfiles';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator(); // Sử dụng BottomTabNavigator
@@ -41,7 +44,17 @@ const TabNavigator = () => (
 
                 return <Icon name={iconName} size={25} color={color} />;
             },
-            headerTitle: () => <Header />,
+            headerTitle: () => {
+                if (route.name === 'SubscriptionPlans') {
+                    return <Header1 />;
+                }
+                if (route.name === 'Profile') {
+                    return <Header2 />;
+                }
+                if (route.name === 'Chat') {
+                    return <Header3 />;
+                }
+            },
             headerStyle: {
                 height: 85,
             },
@@ -59,12 +72,15 @@ const TabNavigator = () => (
 
 function RootComponent() {
     return (
-        <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
-                <Stack.Screen name="Signin" component={Signin} />
-                <Stack.Screen name="Home" component={TabNavigator}></Stack.Screen>
-            </Stack.Navigator>
-        </NavigationContainer>
+        <>
+            <NavigationContainer>
+                <Stack.Navigator screenOptions={{ headerShown: false }}>
+                    <Stack.Screen name="Signin" component={Signin} />
+                    <Stack.Screen name="Home" component={TabNavigator} />
+                    <Stack.Screen name="EditProfile" component={EditProfile} />
+                </Stack.Navigator>
+            </NavigationContainer>
+        </>
     );
 }
 
