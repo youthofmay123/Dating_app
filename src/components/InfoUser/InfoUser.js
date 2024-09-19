@@ -15,7 +15,7 @@ const InfoUser = () => {
             <View style={styles.groupInfo}>
                 <View style={styles.groupName}>
                     <Text style={styles.name}>Joshua Edwards, 29</Text>
-                    <IconShield name="shield-checkmark-sharp" size={15} style={{ paddingLeft: 5 }} />
+                    <IconShield name="shield-checkmark-sharp" size={15} style={{ paddingLeft: 5 }} color={'gray'} />
                 </View>
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('EditProfile')}>
                     <Text style={styles.text}>Edit your profile</Text>

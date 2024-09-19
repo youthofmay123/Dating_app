@@ -19,43 +19,39 @@ const styles = StyleSheet.create({
         left: 10,
     },
 
-    title: {
+    mainTitle: {
         textAlign: 'center',
         fontSize: 20,
     },
     complete: {
-        backgroundColor: '#FF3F30',
-        height: 80,
+        height: 60,
         margin: 10,
+        justifyContent: 'center',
     },
+    title: { fontWeight: 'bold', fontSize: 18, paddingBottom: 5 },
+    description: { fontSize: 12, color: 'gray', paddingBottom: 5 },
     photos: {
-        backgroundColor: '#FF8B00',
         height: 350,
         margin: 10,
     },
     aboutMe: {
-        backgroundColor: '#FFD800',
-        height: 70,
+        height: 150,
         margin: 10,
     },
     myDetails: {
-        backgroundColor: '#80CF01',
         height: 600,
         margin: 10,
     },
     iEnjoy: {
-        backgroundColor: '#38BDF6',
-        height: 70,
+        height: 150,
         margin: 10,
     },
     iCommunicate: {
-        backgroundColor: '#0060FF',
-        height: 70,
+        height: 120,
         margin: 10,
     },
     linkedAccounts: {
-        backgroundColor: '#9000C1',
-        height: 80,
+        height: 200,
         margin: 10,
     },
 });

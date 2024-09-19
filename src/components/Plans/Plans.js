@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Text, View, SafeAreaView, ScrollView } from 'react-native';
+import { Text, View } from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import color from '../../components/color/color';
 import styles from './styles';
 
@@ -59,6 +60,39 @@ const Plans = () => {
                     buttonStyle={styles.upgradeButton}
                     titleStyle={{ color: 'gray', fontSize: 12 }}
                 ></Button>
+                <Icon name="star-o" size={20} style={[styles.iconStar, { left: 40, top: 10 }]} color={color.white} />
+                <Icon name="star-o" size={20} style={[styles.iconStar, { left: 10, top: 40 }]} color={color.white} />
+                <Icon name="star-o" size={20} style={[styles.iconStar, { right: 30, top: 15 }]} color={color.white} />
+                <Icon name="star-o" size={20} style={[styles.iconStar, { bottom: 40, left: 10 }]} color={color.white} />
+                <Icon name="star-o" size={10} style={[styles.iconStar, { bottom: 60, left: 50 }]} color={color.white} />
+                <Icon
+                    name="star-o"
+                    size={10}
+                    style={[styles.iconStar, { bottom: 90, right: 20 }]}
+                    color={color.white}
+                />
+                <Icon name="star-o" size={10} style={[styles.iconStar, { bottom: 20, left: 60 }]} color={color.white} />
+                <Icon name="star-o" size={10} style={[styles.iconStar, { bottom: 40, right: 9 }]} color={color.white} />
+                <Icon
+                    name="star-o"
+                    size={10}
+                    style={[styles.iconStar, { bottom: 5, right: 150 }]}
+                    color={color.white}
+                />
+                <Icon name="star-o" size={10} style={[styles.iconStar, { top: 5, right: 150 }]} color={color.white} />
+
+                <Icon
+                    name="star-o"
+                    size={10}
+                    style={[styles.iconStar, { bottom: 20, right: 30 }]}
+                    color={color.white}
+                />
+                <Icon
+                    name="star-o"
+                    size={20}
+                    style={[styles.iconStar, { bottom: 50, right: 50 }]}
+                    color={color.white}
+                />
             </View>
 
             <View style={styles.tableContainer}>

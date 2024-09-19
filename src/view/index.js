@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import SubscriptionPlans from './SubscriptionPlans';
-import Profile from './Profile';
+import Profiles from './Profiles';
 import Notify from './Notify';
 import Chat from './Chat';
 import Signin from './Signin';
@@ -28,7 +28,7 @@ const TabNavigator = () => (
                     case 'SubscriptionPlans':
                         iconName = 'user-o';
                         break;
-                    case 'Profile':
+                    case 'Profiles':
                         iconName = 'heart-o';
                         break;
                     case 'Notify':
@@ -64,7 +64,7 @@ const TabNavigator = () => (
         })}
     >
         <Tab.Screen name="SubscriptionPlans" component={SubscriptionPlans} />
-        <Tab.Screen name="Profile" component={Profile} />
+        <Tab.Screen name="Profiles" component={Profiles} />
         <Tab.Screen name="Notify" component={Notify} />
         <Tab.Screen name="Chat" component={Chat} />
     </Tab.Navigator>

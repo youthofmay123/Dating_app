@@ -21,6 +21,9 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
         textAlign: 'center',
     },
+    iconStar: {
+        position: 'absolute',
+    },
     upgradeButton: {
         backgroundColor: color.white,
         paddingHorizontal: 20,
