@@ -2,7 +2,7 @@ import { Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Options = (props) => {
-    const { title } = props;
+    const { onRemove, title } = props;
     return (
         <View
             style={{
@@ -16,7 +16,7 @@ const Options = (props) => {
             }}
         >
             <Text style={{ padding: 5 }}>{title}</Text>
-            <Icon name="times-circle" size={20} color={'gray'} style={{ padding: 5 }} />
+            <Icon name="times" size={15} color={'gray'} style={{ padding: 6 }} onPress={onRemove} />
         </View>
     );
 };

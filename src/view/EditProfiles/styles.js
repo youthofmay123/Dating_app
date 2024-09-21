@@ -43,11 +43,11 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     iEnjoy: {
-        height: 150,
+        height: 180,
         margin: 10,
     },
     iCommunicate: {
-        height: 120,
+        height: 150,
         margin: 10,
     },
     linkedAccounts: {
