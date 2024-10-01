@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView } from 'react-native';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
@@ -14,7 +14,7 @@ import LinkedAccounts from '../../components/LinkedAccounts';
 
 const EditProfile = () => {
     const navigation = useNavigation();
-    let complete = 0.45;
+    const progress = 0.45;
 
     return (
         <SafeAreaView style={{ backgroundColor: color.white }}>
@@ -31,14 +31,14 @@ const EditProfile = () => {
                             }}
                         >
                             <Text style={{ fontWeight: 'bold' }}>Profile completion: </Text>
-                            <Text style={{ color: color.primary, fontWeight: 'bold' }}>{`${complete * 100}%`}</Text>
+                            <Text style={{ color: color.primary, fontWeight: 'bold' }}>{`${progress * 100}%`}</Text>
                         </View>
                         <Progress.Bar
-                            progress={complete}
+                            progress={progress}
                             width={338}
                             height={10}
                             color={color.primary}
-                            unfilledColor="#B2EBF2"
+                            unfilledColor={color.second}
                             borderWidth={0}
                             marginTop={10}
                         />

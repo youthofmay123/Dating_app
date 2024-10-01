@@ -6,7 +6,7 @@ const Profile = () => {
     return (
         <SafeAreaView style={styles.text}>
             <View>
-                <Text>Profile</Text>
+                <Text>Match</Text>
             </View>
         </SafeAreaView>
     );

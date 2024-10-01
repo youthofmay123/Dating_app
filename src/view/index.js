@@ -3,8 +3,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import SubscriptionPlans from './SubscriptionPlans';
-import Profiles from './Profiles';
+import Profile from './Profile';
+import Match from './Match';
 import Notify from './Notify';
 import Chat from './Chat';
 import Signin from './Signin';
@@ -25,10 +25,10 @@ const TabNavigator = () => (
                 let iconName;
 
                 switch (route.name) {
-                    case 'SubscriptionPlans':
+                    case 'Profile':
                         iconName = 'user-o';
                         break;
-                    case 'Profiles':
+                    case 'Match':
                         iconName = 'heart-o';
                         break;
                     case 'Notify':
@@ -45,10 +45,10 @@ const TabNavigator = () => (
                 return <Icon name={iconName} size={25} color={color} />;
             },
             headerTitle: () => {
-                if (route.name === 'SubscriptionPlans') {
+                if (route.name === 'Profile') {
                     return <Header1 />;
                 }
-                if (route.name === 'Profile') {
+                if (route.name === 'Match') {
                     return <Header2 />;
                 }
                 if (route.name === 'Chat') {
@@ -63,8 +63,8 @@ const TabNavigator = () => (
             tabBarInactiveTintColor: color.black,
         })}
     >
-        <Tab.Screen name="SubscriptionPlans" component={SubscriptionPlans} />
-        <Tab.Screen name="Profiles" component={Profiles} />
+        <Tab.Screen name="Profile" component={Profile} />
+        <Tab.Screen name="Match" component={Match} />
         <Tab.Screen name="Notify" component={Notify} />
         <Tab.Screen name="Chat" component={Chat} />
     </Tab.Navigator>

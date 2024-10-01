@@ -20,27 +20,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 18,
         fontWeight: 'bold',
-    },
-    progressBar: {
-        height: 8,
-        width: 138,
-        bottom: -13,
-        borderRadius: 5,
-        flexDirection: 'row',
-    },
-    progressBarLeft: {
-        width: '50%',
-        height: '100%',
-        backgroundColor: color.primary,
-        borderTopLeftRadius: 5,
-        borderBottomLeftRadius: 5,
-    },
-    progressBarRight: {
-        width: '50%',
-        height: '100%',
-        backgroundColor: color.second,
-        borderTopRightRadius: 5,
-        borderBottomRightRadius: 5,
+        marginTop: 15,
     },
     iconRefresh: {
         paddingLeft: 18,

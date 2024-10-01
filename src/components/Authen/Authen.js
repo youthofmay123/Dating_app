@@ -6,7 +6,7 @@ import color from '../color/color';
 
 const Authen = () => {
     return (
-        <SafeAreaView style={styles.component}>
+        <TouchableOpacity style={styles.component}>
             <View style={styles.iconShield}>
                 <Icon1 name="shield-checkmark-sharp" color="#3299E5" size={30} />
             </View>
@@ -20,7 +20,7 @@ const Authen = () => {
                 </Text>
             </View>
             <Icon2 name="angle-right" color="#333" size={30} style={{ padding: 10 }} />
-        </SafeAreaView>
+        </TouchableOpacity>
     );
 };
 

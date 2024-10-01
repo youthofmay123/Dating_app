@@ -13,16 +13,37 @@ const styles = StyleSheet.create({
         marginBottom: 50,
     },
     logo: {
-        width: 100,
-        height: 100,
+        width: 90,
+        height: 90,
         borderRadius: 50,
         borderWidth: 1,
         borderColor: '#333',
+        opacity: 0.85,
     },
+    borderLogo1: {
+        position: 'absolute',
+        top: -12.5,
+        width: 115,
+        height: 115,
+        borderColor: '#C397F0',
+        borderRadius: 100,
+        borderWidth: 15,
+    },
+    borderLogo2: {
+        position: 'absolute',
+        top: -20,
+        width: 130,
+        height: 130,
+        borderColor: '#EAE0FC',
+        borderRadius: 100,
+        borderWidth: 10,
+    },
+
     title: {
         fontSize: 28,
         fontWeight: '700',
         marginVertical: 10,
+        marginTop: 20,
     },
     subtitle: {
         fontSize: 14,
@@ -41,13 +62,13 @@ const styles = StyleSheet.create({
         marginVertical: 10,
     },
     appleButton: {
-        backgroundColor: '#000',
+        backgroundColor: '#171A1F',
     },
     facebookButton: {
-        backgroundColor: '#1877F2',
+        backgroundColor: '#369AE6',
     },
     phoneButton: {
-        backgroundColor: '#00C1D4',
+        backgroundColor: '#00BDD5',
     },
     buttonText: {
         color: '#fff',

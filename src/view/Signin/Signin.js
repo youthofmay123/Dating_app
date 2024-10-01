@@ -11,7 +11,9 @@ const Signin = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <View style={styles.logoContainer}>
-                <Image source={require('../../images/Cat.png')} style={styles.logo} />
+                <Image source={require('../../images/logo.png')} style={styles.logo} />
+                <View style={styles.borderLogo1}></View>
+                <View style={styles.borderLogo2}></View>
                 <Text style={styles.title}>HeartSync</Text>
                 <Text style={styles.subtitle}>Where Hearts Connect, Love Finds Its Sync.</Text>
             </View>

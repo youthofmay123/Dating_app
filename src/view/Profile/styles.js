@@ -11,7 +11,9 @@ const styles = StyleSheet.create({
         padding: 15,
     },
     updateUser: {
-        height: 700,
+        // height: 700,
+        marginBottom: 10,
+        minHeight: 200,
     },
     infoUser: {
         height: '60%',

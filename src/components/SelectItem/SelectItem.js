@@ -6,7 +6,7 @@ const SelectItem = (props) => {
     return (
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 6 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Icon name={icon} style={{ padding: 10 }} size={18} color={'#333'}></Icon>
+                <Icon name={icon} style={{ padding: 10, width: 40 }} size={18} color={'#333'}></Icon>
                 <Text style={{ padding: 10 }}>{name}</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
