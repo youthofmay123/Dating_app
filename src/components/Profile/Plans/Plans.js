@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import color from '../../components/color/color';
+import color from '../../../components/color/color';
 import styles from './styles';
 
 const Plans = () => {

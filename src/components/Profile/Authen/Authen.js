@@ -2,7 +2,7 @@ import { View, SafeAreaView, Text, Image, TouchableOpacity } from 'react-native'
 import styles from './styles';
 import Icon1 from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
-import color from '../color/color';
+import color from '../../color/color';
 
 const Authen = () => {
     return (

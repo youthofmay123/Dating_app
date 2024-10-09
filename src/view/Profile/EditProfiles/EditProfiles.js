@@ -1,18 +1,20 @@
 import React from 'react';
-import { Text, View, SafeAreaView, ScrollView } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView, Dimensions } from 'react-native';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
-import color from '../../components/color/color';
+import color from '../../../components/color/color';
 import * as Progress from 'react-native-progress';
-import Photos from '../../components/Photos';
-import AboutMe from '../../components/AboutMe';
-import MyDetails from '../../components/MyDetails';
-import IEnjoy from '../../components/IEnjoy';
-import ICommunicate from '../../components/ICommunicate';
-import LinkedAccounts from '../../components/LinkedAccounts';
+import Photos from '../../../components/Profile/EditProfiles/Photos';
+import AboutMe from '../../../components/AboutMe';
+import MyDetails from '../../../components/MyDetails';
+import IEnjoy from '../../../components/IEnjoy';
+import ICommunicate from '../../..//components/ICommunicate';
+import LinkedAccounts from '../../../components/LinkedAccounts';
 
 const EditProfile = () => {
+    const width = Dimensions.get('window').width;
+    const height = Dimensions.get('window').height;
     const navigation = useNavigation();
     const progress = 0.45;
 
@@ -33,15 +35,17 @@ const EditProfile = () => {
                             <Text style={{ fontWeight: 'bold' }}>Profile completion: </Text>
                             <Text style={{ color: color.primary, fontWeight: 'bold' }}>{`${progress * 100}%`}</Text>
                         </View>
-                        <Progress.Bar
-                            progress={progress}
-                            width={338}
-                            height={10}
-                            color={color.primary}
-                            unfilledColor={color.second}
-                            borderWidth={0}
-                            marginTop={10}
-                        />
+                        <View style={{ alignItems: 'center' }}>
+                            <Progress.Bar
+                                progress={progress}
+                                width={width - 20}
+                                height={10}
+                                color={color.primary}
+                                unfilledColor={color.second}
+                                borderWidth={0}
+                                marginTop={10}
+                            />
+                        </View>
                     </View>
                     <View style={styles.photos}>
                         <Photos />

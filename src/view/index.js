@@ -13,7 +13,7 @@ import Header2 from '../layout/DefaultLayout/Header2/Header2';
 import Header3 from '../layout/DefaultLayout/Header3/Header3';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import color from '../components/color/color';
-import EditProfile from './EditProfiles/EditProfiles';
+import EditProfile from './Profile/EditProfiles';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator(); // Sử dụng BottomTabNavigator

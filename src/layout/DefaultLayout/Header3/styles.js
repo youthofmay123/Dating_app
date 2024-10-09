@@ -22,11 +22,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     searchContainer: {
+        height: '60%',
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: '#f1f1f1',
         borderRadius: 5,
-        padding: 5,
     },
     icon: {
         position: 'absolute',
@@ -35,9 +35,11 @@ const styles = StyleSheet.create({
     input: {
         // flex: 1,
         marginLeft: 32,
-        width: 240,
+        width: '80%',
+        height: '100%',
         fontSize: 14,
         color: '#000',
+        padding: 5,
     },
 });
 

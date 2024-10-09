@@ -8,10 +8,13 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         borderStyle: 'dashed',
         borderRadius: 10,
-        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
         textAlignVertical: 'center',
-        fontSize: 40,
+    },
+    iconAdd: {
         color: 'gray',
+        fontSize: 40,
     },
 });
 

@@ -3,9 +3,9 @@ import { Text, View, SafeAreaView, ScrollView } from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
 import InfoUser from '../../components/InfoUser/InfoUser';
 import styles from './styles';
-import Authen from '../../components/Authen';
-import Plans from '../../components/Plans';
-import Safety from '../../components/Safety';
+import Authen from '../../components/Profile/Authen';
+import Plans from '../../components/Profile/Plans';
+import Safety from '../../components/Profile/Safety';
 
 const SubscriptionPlans = () => {
     const [plans, setPlans] = useState(true);
