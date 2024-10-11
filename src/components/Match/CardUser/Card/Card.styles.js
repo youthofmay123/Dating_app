@@ -59,7 +59,6 @@ export default StyleSheet.create({
         color: 'white',
         paddingLeft: 10,
         fontWeight: Platform.OS === 'ios' ? '700' : 'bold',
-
         fontFamily: 'Avenir',
     },
 });

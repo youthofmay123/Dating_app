@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
-import { Text, View, SafeAreaView } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { Text, View, SafeAreaView, Modal, TouchableOpacity } from 'react-native';
 import Swiper from 'react-native-deck-swiper';
 
-import { Card, OverlayLabel } from '../../components/Match/CardUser';
+import { Card, OverlayLabel, Notify } from '../../components/Match/CardUser';
 import userDetail from '../../constants/userDetail';
 import styles from './styles';
 
@@ -11,11 +11,19 @@ const Match = () => {
     // const handleOnSwipedLeft = () => useSwiper.swipeLeft();
     // const handleOnSwipedTop = () => useSwiper.swipeTop();
     // const handleOnSwipedRight = () => useSwiper.swipeRight();
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const handleSwipedRight = () => {
+        // Hiển thị modal khi vuốt sang phải
+        setIsModalVisible(true);
+    };
 
+    const handleCloseModal = () => {
+        // Đóng modal
+        setIsModalVisible(false);
+    };
     return (
         <View style={styles.container}>
             <View style={styles.swiperContainer}>
-                <Text>Nga</Text>
                 <Swiper
                     ref={useSwiper}
                     animateCardOpacity
@@ -30,6 +38,7 @@ const Match = () => {
                     animateOverlayLabelsOpacity
                     disableTopSwipe // Chặn vuốt lên
                     disableBottomSwipe // Chặn vuốt xuống
+                    onSwipedRight={handleSwipedRight} // Gọi khi vuốt sang phải
                     overlayLabels={{
                         right: {
                             title: 'LIKE',
@@ -44,6 +53,14 @@ const Match = () => {
                         },
                     }}
                 />
+                <Modal
+                    visible={isModalVisible}
+                    transparent={true}
+                    animationType="fade"
+                    onRequestClose={handleCloseModal} // Đóng modal khi nhấn phím back (Android)
+                >
+                    <Notify handleCloseModal={handleCloseModal} />
+                </Modal>
             </View>
         </View>
     );

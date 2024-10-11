@@ -1,4 +1,4 @@
 import Card from './Card/Card';
 import OverlayLabel from './OverlayLabel/OverlayLabel';
-
-export { Card, OverlayLabel };
+import Notify from './Notify/Notify';
+export { Card, OverlayLabel, Notify };
