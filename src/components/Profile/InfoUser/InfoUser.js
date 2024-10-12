@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import IconShield from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import Svg, { Circle } from 'react-native-svg';
-import color from '../color/color';
+import color from '../../color/color';
 import { useEffect, useRef } from 'react';
 import { Animated } from 'react-native';
 
@@ -22,7 +22,7 @@ const InfoUser = () => {
             <View style={styles.groupAvatar}>
                 <Svg height="120" width="120" style={styles.percent}>
                     <Circle stroke="#e6e6e6" fill="none" cx="60" cy="60" r={radius} strokeWidth={strokeWidth} />
-                    <Image source={require('../../images/Frog.png')} style={styles.avatar} />
+                    <Image source={require('../../../images/Frog.png')} style={styles.avatar} />
                     <Circle
                         stroke={color.primary}
                         fill="none"

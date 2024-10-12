@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Text, View, SafeAreaView, ScrollView } from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
-import InfoUser from '../../components/InfoUser/InfoUser';
+import InfoUser from '../../components/Profile/InfoUser';
 import styles from './styles';
 import Authen from '../../components/Profile/Authen';
 import Plans from '../../components/Profile/Plans';

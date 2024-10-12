@@ -6,11 +6,11 @@ import { useNavigation } from '@react-navigation/native';
 import color from '../../../components/color/color';
 import * as Progress from 'react-native-progress';
 import Photos from '../../../components/Profile/EditProfiles/Photos';
-import AboutMe from '../../../components/AboutMe';
-import MyDetails from '../../../components/MyDetails';
-import IEnjoy from '../../../components/IEnjoy';
-import ICommunicate from '../../..//components/ICommunicate';
-import LinkedAccounts from '../../../components/LinkedAccounts';
+import AboutMe from '../../../components/Profile/EditProfiles/AboutMe';
+import MyDetails from '../../../components/Profile/EditProfiles/MyDetails';
+import IEnjoy from '../../../components/Profile/EditProfiles/IEnjoy';
+import ICommunicate from '../../../components/Profile/EditProfiles/ICommunicate';
+import LinkedAccounts from '../../../components/Profile/EditProfiles/LinkedAccounts';
 
 const EditProfile = () => {
     const width = Dimensions.get('window').width;
