@@ -8,9 +8,11 @@ import Match from './Match';
 import Notify from './Notify';
 import Chat from './Chat';
 import Signin from './Signin';
+import Filter from '../components/Match/Filter/index';
 import Header1 from '../layout/DefaultLayout/Header1/Header1';
 import Header2 from '../layout/DefaultLayout/Header2/Header2';
 import Header3 from '../layout/DefaultLayout/Header3/Header3';
+import HeaderFilterScreen from '../layout/DefaultLayout/HeaderFilterScreen/HeaderFilterScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import color from '../components/color/color';
 import EditProfile from './Profile/EditProfiles';
@@ -78,6 +80,16 @@ function RootComponent() {
                     <Stack.Screen name="Signin" component={Signin} />
                     <Stack.Screen name="Home" component={TabNavigator} />
                     <Stack.Screen name="EditProfile" component={EditProfile} />
+                    <Stack.Screen
+                        name="Filter"
+                        component={Filter}
+                        options={{
+                            headerShown: true,
+                            headerTitle: '', // Đặt title thành rỗng để bỏ title mặc định
+                            headerLeft: null, // Bỏ nút back (icon quay lại) mặc định
+                            headerTitle: () => <HeaderFilterScreen />,
+                        }}
+                    />
                 </Stack.Navigator>
             </NavigationContainer>
         </>

@@ -4,9 +4,11 @@ import styles from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import * as Progress from 'react-native-progress';
 import color from '../../../components/color/color';
+import { useNavigation } from '@react-navigation/native';
 
 const Header = () => {
     const progress = 0.45;
+    const navigation = useNavigation();
     return (
         <View style={styles.header}>
             <View style={styles.left}>
@@ -34,7 +36,7 @@ const Header = () => {
                     {/* <View style={styles.progressBarRight}></View> */}
                 </View>
             </View>
-            <TouchableOpacity style={styles.iconSliders}>
+            <TouchableOpacity style={styles.iconSliders} onPress={() => navigation.navigate('Filter')}>
                 <Icon name="sliders" size={20} />
             </TouchableOpacity>
         </View>
