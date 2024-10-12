@@ -1,7 +1,18 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+const { height } = Dimensions.get('window');
+
 const styles = StyleSheet.create({
-    text: {
+    container: {
         flex: 1,
+        justifyContent: 'space-between',
+        backgroundColor: 'white',
+    },
+    swiperContainer: {
+        height: '80%',
+    },
+
+    overlayWrapper: {
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
     },

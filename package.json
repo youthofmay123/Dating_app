@@ -19,11 +19,16 @@
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "react-native": "0.74.5",
+        "react-native-deck-swiper": "^2.0.17",
         "react-native-elements": "^3.4.3",
         "react-native-paper": "^3.12.0",
         "react-native-progress": "^5.0.1",
         "react-native-svg": "^15.7.1",
-        "react-native-web": "~0.19.10"
+        "react-native-tab-view": "^3.5.2",
+        "react-native-vector-icons": "^10.2.0",
+        "react-native-view-overflow": "^0.0.5",
+        "react-native-web": "~0.19.10",
+        "react-navigation-material-bottom-tabs": "^2.3.5"
     },
     "devDependencies": {
         "@babel/core": "^7.20.0",
