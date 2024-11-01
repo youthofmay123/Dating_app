@@ -2,10 +2,38 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
+import { firebase } from '../../firebase/config';
+import * as Google from 'expo-auth-session/providers/google';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Signin = ({ navigation }) => {
-    const handleNavigation = () => {
-        navigation.navigate('Home'); // Điều hướng đến màn hình chứa TabNavigator
+    const [request, response, promptAsync] = Google.useAuthRequest({
+        clientId: '522644652775-61s8codphivbkm74jgoihk00cojp7fd9.apps.googleusercontent.com', // ID OAuth từ Google
+        redirectUri: 'https://auth.expo.io/@huy-nguyen/your-app-slug',
+        extraParams: { prompt: 'consent' }, // Yêu cầu đồng ý mỗi khi đăng nhập
+    });
+
+    React.useEffect(() => {
+        if (response?.type === 'success') {
+            const { id_token } = response.params;
+            const credential = firebase.auth.GoogleAuthProvider.credential(id_token);
+            firebase
+                .auth()
+                .signInWithCredential(credential)
+                .then(async () => {
+                    await AsyncStorage.setItem('userToken', id_token);
+                    navigation.navigate('Home'); // Điều hướng đến trang chính sau khi đăng nhập thành công
+                })
+                .catch((error) => {
+                    console.error('Google login error: ', error);
+                });
+        } else if (response?.type === 'error') {
+            console.error('Error with Google login: ', response.params);
+        }
+    }, [response]);
+
+    const handleGoogleLogin = () => {
+        promptAsync();
     };
 
     return (
@@ -19,17 +47,23 @@ const Signin = ({ navigation }) => {
             </View>
 
             <View style={styles.buttonsContainer}>
-                <TouchableOpacity style={[styles.button, styles.appleButton]} onPress={handleNavigation}>
-                    <Icon name="apple" size={20} color="#fff" />
-                    <Text style={styles.buttonText}>Continue with Apple</Text>
+                <TouchableOpacity style={[styles.button, styles.googleButton]} onPress={handleGoogleLogin}>
+                    <Icon name="google" size={20} color="#fff" />
+                    <Text style={styles.buttonText}>Continue with Google</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={[styles.button, styles.facebookButton]} onPress={handleNavigation}>
+                <TouchableOpacity
+                    style={[styles.button, styles.facebookButton]}
+                    onPress={() => navigation.navigate('Home')}
+                >
                     <Icon name="facebook" size={20} color="#fff" />
                     <Text style={styles.buttonText}>Continue with Facebook</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={[styles.button, styles.phoneButton]} onPress={handleNavigation}>
+                <TouchableOpacity
+                    style={[styles.button, styles.phoneButton]}
+                    onPress={() => navigation.navigate('Login')}
+                >
                     <Icon name="phone" size={20} color="#fff" />
                     <Text style={styles.buttonText}>Use phone number</Text>
                 </TouchableOpacity>

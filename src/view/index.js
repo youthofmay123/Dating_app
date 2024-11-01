@@ -14,6 +14,9 @@ import Header3 from '../layout/DefaultLayout/Header3/Header3';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import color from '../components/color/color';
 import EditProfile from './Profile/EditProfiles';
+import Window from './Chat/Window';
+import AuthProvider from '../Context/AuthProvider';
+import Login from '../components/Login/Login';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator(); // Sử dụng BottomTabNavigator
@@ -72,15 +75,15 @@ const TabNavigator = () => (
 
 function RootComponent() {
     return (
-        <>
-            <NavigationContainer>
-                <Stack.Navigator screenOptions={{ headerShown: false }}>
-                    <Stack.Screen name="Signin" component={Signin} />
-                    <Stack.Screen name="Home" component={TabNavigator} />
-                    <Stack.Screen name="EditProfile" component={EditProfile} />
-                </Stack.Navigator>
-            </NavigationContainer>
-        </>
+        <NavigationContainer>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="Signin" component={Signin} />
+                <Stack.Screen name="Home" component={TabNavigator} />
+                <Stack.Screen name="EditProfile" component={EditProfile} />
+                <Stack.Screen name="Window" component={Window} />
+                <Stack.Screen name="Login" component={Login} />
+            </Stack.Navigator>
+        </NavigationContainer>
     );
 }
 
