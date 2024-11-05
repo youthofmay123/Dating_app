@@ -18,8 +18,7 @@ export default StyleSheet.create({
     valueText: {
         width: 50,
         color: 'black',
-        fontSize: 17,
-        fontWeight: 'bold',
+        fontSize: 13,
         textAlign: 'center',
     },
 });

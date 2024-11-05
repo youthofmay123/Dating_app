@@ -2,15 +2,15 @@ import React, { useCallback, useState } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import Slider from 'rn-range-slider';
 
-import { Label, Notch, Rail, RailSelected, TextButton, Thumb } from './RangeSlider/index.js';
+import { Label, Notch, Rail, RailSelected, TextButton, Thumb } from './SliderDetail';
 
 import styles from './Slider.styles.js';
 
 const SliderScreen = (props) => {
-    // const { min, max, disableRange, low, height } = props;
+    const { min, max, disableRange, height } = props;
     const [low, setLow] = useState(0);
     const [high, setHigh] = useState(100);
-    const [floatingLabel, setFloatingLabel] = useState(false);
+    // const [floatingLabel, setFloatingLabel] = useState(false);
     const renderThumb = useCallback((name) => <Thumb name={name} />, []);
     const renderRail = useCallback(() => <Rail />, []);
     const renderRailSelected = useCallback(() => <RailSelected />, []);
@@ -32,7 +32,7 @@ const SliderScreen = (props) => {
                     min={min}
                     max={max}
                     step={1}
-                    disableRange={false}
+                    disableRange={disableRange}
                     renderThumb={renderThumb}
                     renderRail={renderRail}
                     renderRailSelected={renderRailSelected}
