@@ -5,6 +5,7 @@ import { useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Tag } from '../../../components/Match/Profile';
 import styles from './Profile.styles';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Hàm lấy icon theo từng loại chi tiết
 const getIconAndColor = (key) => {
@@ -37,8 +38,11 @@ const getIconAndColor = (key) => {
 };
 
 const Profile = () => {
-    const route = useRoute();
-    const user = route.params?.user; // Lấy dữ liệu người dùng từ tham số nếu có
+    // Lấy thông tin người dùng từ Redux
+    const user = useSelector((state) => state.user.currentUser);
+    if (!user) {
+        return <Text>No user data available</Text>; // Hiển thị nếu không có dữ liệu người dùng
+    }
 
     // Lọc và tạo danh sách các chi tiết không null
     const detailTags = Object.entries(user.details || {})

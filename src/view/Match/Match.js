@@ -1,17 +1,17 @@
 import React, { useRef, useState } from 'react';
 import { View, Modal } from 'react-native';
 import Swiper from 'react-native-deck-swiper';
-
+import { useDispatch, useSelector } from 'react-redux';
 import { Card, OverlayLabel, Notify } from '../../components/Match/CardUser';
-import userDetail from '../../constants/userDetail';
 import styles from './styles';
+import { setCurrentUser } from '../../redux/userSlice';
 import { useNavigation } from '@react-navigation/native';
 
 const Match = () => {
+    const dispatch = useDispatch();
     const navigation = useNavigation();
-    const [cardIndex, setCardIndex] = useState(0); // Initialize to 0 to track the current card index
     const [isModalVisible, setIsModalVisible] = useState(false);
-
+    const userDetail = useSelector((state) => state.user.allUsers);
     const handleSwipedRight = () => {
         setIsModalVisible(true); // Show modal when swiped right
     };
@@ -21,10 +21,14 @@ const Match = () => {
     };
 
     const handleSwipedTop = () => {
-        // Get the selected user's details based on the current cardIndex
-        const selectedUser = userDetail[cardIndex];
-        // Navigate to the ProfileDetail screen with the selected user's data
-        navigation.navigate('ProfileDetail', { user: selectedUser });
+        navigation.navigate('ProfileDetail');
+    };
+    // Hàm được gọi khi người dùng vuốt
+    const handleSwiped = (index) => {
+        // Lấy người dùng tại index
+        const selectedUser = userDetail[index];
+        // Cập nhật người dùng hiện tại trong Redux store
+        dispatch(setCurrentUser(selectedUser));
     };
 
     return (
@@ -43,7 +47,7 @@ const Match = () => {
                     disableBottomSwipe
                     onSwipedTop={handleSwipedTop}
                     onSwipedRight={handleSwipedRight}
-                    onSwiped={(index) => setCardIndex(index + 1)} // Update cardIndex on each swipe
+                    onSwiped={handleSwiped} // Update cardIndex on each swipe
                     overlayLabels={{
                         right: {
                             title: 'LIKE',
