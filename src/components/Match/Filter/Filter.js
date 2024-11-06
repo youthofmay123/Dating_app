@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, ScrollView, Alert } from 'react-native';
 import Slider from './Slider/index.js';
 import { Button, CheckBox, Switch } from 'react-native-elements';
 import { useState } from 'react';
+
 import SelectLanguage from './SelectLanguage/SelectLanguage.js';
 import styles from './Filter.styles.js';
 
