@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 50,
-        maxWidth: 150,
+        maxWidth: '100%',
         marginVertical: 10,
         marginHorizontal: 5,
         paddingHorizontal: 5,

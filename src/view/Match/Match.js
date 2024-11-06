@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Text, View, SafeAreaView, Modal, TouchableOpacity } from 'react-native';
+import { View, Modal } from 'react-native';
 import Swiper from 'react-native-deck-swiper';
 
 import { Card, OverlayLabel, Notify } from '../../components/Match/CardUser';
@@ -9,47 +9,41 @@ import { useNavigation } from '@react-navigation/native';
 
 const Match = () => {
     const navigation = useNavigation();
-    const useSwiper = useRef(null).current;
+    const [cardIndex, setCardIndex] = useState(0); // Initialize to 0 to track the current card index
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const [cardIndex, setCardIndex] = useState(0);
 
     const handleSwipedRight = () => {
-        setIsModalVisible(true); // Hiển thị modal khi vuốt sang phải
+        setIsModalVisible(true); // Show modal when swiped right
     };
 
     const handleCloseModal = () => {
-        setIsModalVisible(false); // Đóng modal
+        setIsModalVisible(false); // Close modal
     };
 
     const handleSwipedTop = () => {
-        const selectedUser = userDetail[cardIndex]; // Lấy thông tin người dùng đã chọn
-        navigation.navigate('ProfileDetail', { user: selectedUser }); // Điều hướng với dữ liệu người dùng
+        // Get the selected user's details based on the current cardIndex
+        const selectedUser = userDetail[cardIndex];
+        // Navigate to the ProfileDetail screen with the selected user's data
+        navigation.navigate('ProfileDetail', { user: selectedUser });
     };
 
     return (
         <View style={styles.container}>
             <View style={styles.swiperContainer}>
                 <Swiper
-                    ref={useSwiper}
                     animateCardOpacity
                     containerStyle={styles.container}
                     cards={userDetail}
                     renderCard={(card) => <Card card={card} />}
-                    cardIndex={cardIndex}
                     backgroundColor="white"
                     stackSize={2}
                     infinite
                     showSecondCard
                     animateOverlayLabelsOpacity
-                    disableBottomSwipe // Chặn vuốt xuống
-                    onSwipedTop={() => {
-                        setCardIndex((prevIndex) => prevIndex + 1);
-                        handleSwipedTop();
-                    }}
-                    onSwipedRight={() => {
-                        setCardIndex((prevIndex) => prevIndex + 1);
-                        handleSwipedRight();
-                    }} // Gọi khi vuốt sang phải
+                    disableBottomSwipe
+                    onSwipedTop={handleSwipedTop}
+                    onSwipedRight={handleSwipedRight}
+                    onSwiped={(index) => setCardIndex(index + 1)} // Update cardIndex on each swipe
                     overlayLabels={{
                         right: {
                             title: 'LIKE',
@@ -68,7 +62,7 @@ const Match = () => {
                     visible={isModalVisible}
                     transparent={true}
                     animationType="fade"
-                    onRequestClose={handleCloseModal} // Đóng modal khi nhấn phím back (Android)
+                    onRequestClose={handleCloseModal}
                 >
                     <Notify handleCloseModal={handleCloseModal} />
                 </Modal>
