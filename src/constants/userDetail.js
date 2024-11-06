@@ -9,15 +9,16 @@ const userDetail = [
                 main: true,
             },
             {
-                url: 'https://example.com/photo2.jpg',
+                url: require('../assets/image/user/Jodshua_Edwards.jpg'),
                 main: false,
             },
             {
-                url: 'https://example.com/photo3.jpg',
+                url: require('../assets/image/user/Jodshua_Edwards.jpg'),
                 main: false,
             },
         ],
-        about_me: '',
+        about_me:
+            'It would be wonderful to meet someone who appreciates the arts and enjoys exploring the vibrant culture of the city. I value open-mindedness, good communication, and a shared passion for classical music and fine arts. Also, mother of 2 cats ;)',
         details: {
             occupation: 'Business Analyst at Tech',
             gender_pronouns: {
@@ -52,15 +53,16 @@ const userDetail = [
                 main: true,
             },
             {
-                url: 'https://example.com/photo2.jpg',
+                url: require('../assets/image/user/Daniel_Williams.jpg'),
                 main: false,
             },
             {
-                url: 'https://example.com/photo3.jpg',
+                url: require('../assets/image/user/Daniel_Williams.jpg'),
                 main: false,
             },
         ],
-        about_me: '',
+        about_me:
+            'It would be wonderful to meet someone who appreciates the arts and enjoys exploring the vibrant culture of the city. I value open-mindedness, good communication, and a shared passion for classical music and fine arts. Also, mother of 2 cats ;)',
         details: {
             occupation: 'Tester at Tech',
             gender_pronouns: {
@@ -95,15 +97,16 @@ const userDetail = [
                 main: true,
             },
             {
-                url: 'https://example.com/photo2.jpg',
+                url: require('../assets/image/user/Andrew_Smith.jpg'),
                 main: false,
             },
             {
-                url: 'https://example.com/photo3.jpg',
+                url: require('../assets/image/user/Andrew_Smith.jpg'),
                 main: false,
             },
         ],
-        about_me: '',
+        about_me:
+            'It would be wonderful to meet someone who appreciates the arts and enjoys exploring the vibrant culture of the city. I value open-mindedness, good communication, and a shared passion for classical music and fine arts. Also, mother of 2 cats ;)',
         details: {
             occupation: 'Data Analyst at Tech',
             gender_pronouns: {
@@ -138,15 +141,16 @@ const userDetail = [
                 main: true,
             },
             {
-                url: 'https://example.com/photo2.jpg',
+                url: require('../assets/image/user/Benjamin_Harris.jpg'),
                 main: false,
             },
             {
-                url: 'https://example.com/photo3.jpg',
+                url: require('../assets/image/user/Benjamin_Harris.jpg'),
                 main: false,
             },
         ],
-        about_me: '',
+        about_me:
+            'It would be wonderful to meet someone who appreciates the arts and enjoys exploring the vibrant culture of the city. I value open-mindedness, good communication, and a shared passion for classical music and fine arts. Also, mother of 2 cats ;)',
         details: {
             occupation: 'Software Engineer at Tech',
             gender_pronouns: {
