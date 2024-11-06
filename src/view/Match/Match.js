@@ -5,22 +5,27 @@ import Swiper from 'react-native-deck-swiper';
 import { Card, OverlayLabel, Notify } from '../../components/Match/CardUser';
 import userDetail from '../../constants/userDetail';
 import styles from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 const Match = () => {
+    const navigation = useNavigation();
     const useSwiper = useRef(null).current;
-    // const handleOnSwipedLeft = () => useSwiper.swipeLeft();
-    // const handleOnSwipedTop = () => useSwiper.swipeTop();
-    // const handleOnSwipedRight = () => useSwiper.swipeRight();
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [cardIndex, setCardIndex] = useState(0);
+
     const handleSwipedRight = () => {
-        // Hiển thị modal khi vuốt sang phải
-        setIsModalVisible(true);
+        setIsModalVisible(true); // Hiển thị modal khi vuốt sang phải
     };
 
     const handleCloseModal = () => {
-        // Đóng modal
-        setIsModalVisible(false);
+        setIsModalVisible(false); // Đóng modal
     };
+
+    const handleSwipedTop = () => {
+        const selectedUser = userDetail[cardIndex]; // Lấy thông tin người dùng đã chọn
+        navigation.navigate('ProfileDetail', { user: selectedUser }); // Điều hướng với dữ liệu người dùng
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.swiperContainer}>
@@ -30,15 +35,21 @@ const Match = () => {
                     containerStyle={styles.container}
                     cards={userDetail}
                     renderCard={(card) => <Card card={card} />}
-                    cardIndex={0}
+                    cardIndex={cardIndex}
                     backgroundColor="white"
                     stackSize={2}
                     infinite
                     showSecondCard
                     animateOverlayLabelsOpacity
-                    disableTopSwipe // Chặn vuốt lên
                     disableBottomSwipe // Chặn vuốt xuống
-                    onSwipedRight={handleSwipedRight} // Gọi khi vuốt sang phải
+                    onSwipedTop={() => {
+                        setCardIndex((prevIndex) => prevIndex + 1);
+                        handleSwipedTop();
+                    }}
+                    onSwipedRight={() => {
+                        setCardIndex((prevIndex) => prevIndex + 1);
+                        handleSwipedRight();
+                    }} // Gọi khi vuốt sang phải
                     overlayLabels={{
                         right: {
                             title: 'LIKE',
@@ -46,7 +57,7 @@ const Match = () => {
                             style: {
                                 wrapper: {
                                     ...styles.overlayWrapper,
-                                    alignItem: 'flex-start',
+                                    alignItems: 'flex-start',
                                     marginLeft: 30,
                                 },
                             },

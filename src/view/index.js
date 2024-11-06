@@ -16,6 +16,7 @@ import HeaderFilterScreen from '../layout/DefaultLayout/HeaderFilterScreen/Heade
 import Icon from 'react-native-vector-icons/FontAwesome';
 import color from '../components/color/color';
 import EditProfile from './Profile/EditProfiles';
+import ProfileDetail from '../view/Match/Profile';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator(); // Sử dụng BottomTabNavigator
@@ -53,6 +54,9 @@ const TabNavigator = () => (
                 if (route.name === 'Match') {
                     return <Header2 />;
                 }
+                if (route.name === 'Notify') {
+                    return <Header3 />;
+                }
                 if (route.name === 'Chat') {
                     return <Header3 />;
                 }
@@ -88,6 +92,19 @@ function RootComponent() {
                             headerTitle: '', // Đặt title thành rỗng để bỏ title mặc định
                             headerLeft: null, // Bỏ nút back (icon quay lại) mặc định
                             headerTitle: () => <HeaderFilterScreen />,
+                        }}
+                    />
+                    <Stack.Screen
+                        name="ProfileDetail"
+                        component={ProfileDetail}
+                        options={{
+                            headerShown: true,
+                            headerTitle: '', // Đặt title thành rỗng để bỏ title mặc định
+                            headerLeft: null, // Bỏ nút back (icon quay lại) mặc định
+                            headerTitle: () => <Header2 />,
+                            headerStyle: {
+                                height: 90, // Chiều cao tùy chỉnh cho header
+                            },
                         }}
                     />
                 </Stack.Navigator>
