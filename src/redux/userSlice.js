@@ -5,6 +5,7 @@ import userDetail from '../constants/userDetail'; // Import dữ liệu mẫu t�
 const initialState = {
     currentUser: userDetail[0], // Chọn người dùng đầu tiên mặc định
     allUsers: userDetail, // Tất cả người dùng
+    favoriteUsers: [], // Khởi tạo favoriteUsers dưới dạng mảng rỗng
 };
 
 // Tạo slice với Redux Toolkit
@@ -20,9 +21,21 @@ const userSlice = createSlice({
         setAllUsers: (state, action) => {
             state.allUsers = action.payload;
         },
+        // Action to add a user to the favorite list
+        addFavoriteUser: (state, action) => {
+            const user = action.payload;
+            console.log('Adding user to favorites:', user); // Check user properties here
+            state.favoriteUsers.push(user);
+        },
+
+        // Action to remove a user from the favorite list
+        removeFavoriteUser: (state, action) => {
+            const userId = action.payload;
+            state.favoriteUsers = state.favoriteUsers.filter((favUser) => favUser.id !== userId);
+        },
     },
 });
 
 // Xuất ra actions và reducer
-export const { setCurrentUser, setAllUsers } = userSlice.actions;
+export const { setCurrentUser, setAllUsers, addFavoriteUser, removeFavoriteUser } = userSlice.actions;
 export default userSlice.reducer;

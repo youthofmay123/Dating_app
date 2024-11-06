@@ -3,7 +3,7 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import styles from './Notify.styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Notify = ({ handleCloseModal, handleContinue, user }) => {
+const Notify = ({ handleCloseModal, handleContinue }) => {
     return (
         <View style={styles.container}>
             <View style={styles.modalContent}>
@@ -19,7 +19,7 @@ const Notify = ({ handleCloseModal, handleContinue, user }) => {
                     <TouchableOpacity onPress={handleCloseModal} style={styles.closeButton}>
                         <Text style={styles.closeButtonText}>Cancel</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => handleContinue(user)} style={styles.continueButton}>
+                    <TouchableOpacity onPress={handleContinue} style={styles.continueButton}>
                         <Text style={styles.continueButtonText}>Continue</Text>
                     </TouchableOpacity>
                 </View>

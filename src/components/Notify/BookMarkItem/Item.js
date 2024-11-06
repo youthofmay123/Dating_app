@@ -6,17 +6,22 @@ import PropTypes from 'prop-types';
 import styles from './Item.styles';
 import { TouchableOpacity } from 'react-native';
 
-const Item = ({ name, pronouns, occupation }) => {
+const Item = ({ photo, name, pronouns, occupation }) => {
     return (
         <View style={[styles.container]}>
             <View style={styles.avatar}>
-                <Image />
+                <Image style={styles.img} source={photo} />
             </View>
             <View style={styles.infor}>
                 <Text style={styles.name}>{name}</Text>
-                <Text style={styles.pronouns}>{pronouns}</Text>
+                <View style={styles.pronouns}>
+                    <Text style={{ width: '100%' }}>{pronouns}</Text>
+                </View>
             </View>
-            <Text style={styles.occupation}>{occupation}</Text>
+            <View style={styles.occupation}>
+                <Icon name="briefcase-outline" size={18} color={'#000'} />
+                <Text style={{ paddingLeft: 5, paddingTop: 2 }}>{occupation}</Text>
+            </View>
         </View>
     );
 };
@@ -32,6 +37,8 @@ Item.propTypes = {
     icon: PropTypes.string,
     color: PropTypes.string,
     text: PropTypes.string,
+    pronouns: PropTypes.string,
+    occupation: PropTypes.string,
 };
 
 export default Item;

@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         maxWidth: '100%',
-        borderWidth: 1,
+        borderWidth: 2,
         borderRadius: 10,
         borderColor: '#00BDD6',
         padding: 20,
@@ -12,8 +12,14 @@ const styles = StyleSheet.create({
     },
     avatar: {
         backgroundColor: 'pink',
-        width: 60,
-        height: 60,
+        width: 70,
+        height: 70,
+        borderRadius: 100,
+        marginBottom: 20,
+    },
+    img: {
+        width: 70,
+        height: 70,
         borderRadius: 100,
         marginBottom: 20,
     },
@@ -25,12 +31,19 @@ const styles = StyleSheet.create({
         fontSize: 16,
         paddingVertical: 5,
     },
-    pronouns: {},
+    pronouns: {
+        // marginTop: 10,
+        // backgroundColor: 'pink',
+        // borderRadius: 100,
+        // justifyContent: 'center',
+        // padding: 5,
+    },
     occupation: {
         position: 'absolute',
         bottom: 5,
         left: 30,
         fontSize: 12,
+        flexDirection: 'row',
     },
 });
 

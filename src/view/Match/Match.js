@@ -4,7 +4,7 @@ import Swiper from 'react-native-deck-swiper';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, OverlayLabel, Notify } from '../../components/Match/CardUser';
 import styles from './styles';
-import { setCurrentUser } from '../../redux/userSlice';
+import { setCurrentUser, addFavoriteUser } from '../../redux/userSlice';
 import { useNavigation } from '@react-navigation/native';
 
 const Match = () => {
@@ -12,11 +12,21 @@ const Match = () => {
     const navigation = useNavigation();
     const [isModalVisible, setIsModalVisible] = useState(false);
     const userDetail = useSelector((state) => state.user.allUsers);
+    const selectedUser = useSelector((state) => state.user.currentUser);
+
     const handleSwipedRight = () => {
         setIsModalVisible(true); // Show modal when swiped right
     };
 
     const handleCloseModal = () => {
+        setIsModalVisible(false); // Close modal
+    };
+
+    const handleContinue = () => {
+        console.log('Selected User:', selectedUser); // Log the selected user to ensure it's not undefined
+        if (selectedUser) {
+            dispatch(addFavoriteUser(selectedUser)); // Only dispatch if selectedUser is valid
+        }
         setIsModalVisible(false); // Close modal
     };
 
@@ -68,7 +78,7 @@ const Match = () => {
                     animationType="fade"
                     onRequestClose={handleCloseModal}
                 >
-                    <Notify handleCloseModal={handleCloseModal} />
+                    <Notify handleCloseModal={handleCloseModal} handleContinue={handleContinue} />
                 </Modal>
             </View>
         </View>
