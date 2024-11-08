@@ -17,6 +17,11 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import color from '../components/color/color';
 import EditProfile from './Profile/EditProfiles';
 import ProfileDetail from '../view/Match/Profile';
+import Window from './Chat/Window';
+import AuthProvider from '../Context/AuthProvider';
+import Login from '../components/Login/Login';
+import { Provider } from 'react-redux';
+import store from '../redux/store';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator(); // Sử dụng BottomTabNavigator
@@ -78,7 +83,7 @@ const TabNavigator = () => (
 
 function RootComponent() {
     return (
-        <>
+        <Provider store={store}>
             <NavigationContainer>
                 <Stack.Navigator screenOptions={{ headerShown: false }}>
                     <Stack.Screen name="Signin" component={Signin} />
@@ -107,9 +112,11 @@ function RootComponent() {
                             },
                         }}
                     />
+                    <Stack.Screen name="Window" component={Window} />
+                    <Stack.Screen name="Login" component={Login} />
                 </Stack.Navigator>
             </NavigationContainer>
-        </>
+        </Provider>
     );
 }
 

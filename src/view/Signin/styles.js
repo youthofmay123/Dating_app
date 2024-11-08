@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         marginVertical: 10,
     },
-    appleButton: {
-        backgroundColor: '#171A1F',
+    googleButton: {
+        backgroundColor: 'gray',
     },
     facebookButton: {
         backgroundColor: '#369AE6',

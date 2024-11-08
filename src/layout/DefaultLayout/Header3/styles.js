@@ -12,16 +12,12 @@ const styles = StyleSheet.create({
         height: '100%',
         backgroundColor: color.white,
     },
-    container: {
-        height: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     title: {
         fontSize: 18,
         fontWeight: 'bold',
     },
     searchContainer: {
+        width: '100%',
         height: '60%',
         flexDirection: 'row',
         alignItems: 'center',
