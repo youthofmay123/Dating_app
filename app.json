@@ -1,7 +1,8 @@
 {
     "expo": {
-        "name": "Dating_app",
-        "slug": "Dating_app",
+        "name": "dating-app",
+        "slug": "dating-app",
+        "scheme": "dating-app",
         "version": "1.0.0",
         "orientation": "portrait",
         "icon": "./assets/icon.png",

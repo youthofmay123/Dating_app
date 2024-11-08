@@ -7,6 +7,7 @@ import Svg, { Circle } from 'react-native-svg';
 import color from '../../color/color';
 import { useEffect, useRef } from 'react';
 import { Animated } from 'react-native';
+import { useSelector } from 'react-redux';
 
 const InfoUser = () => {
     const navigation = useNavigation();
@@ -16,6 +17,7 @@ const InfoUser = () => {
     const strokeWidth = 8;
     const circumference = 2 * Math.PI * radius;
     const progressOffset = circumference - circumference * progress;
+    const user = useSelector((state) => state.user);
 
     return (
         <SafeAreaView style={styles.component}>
@@ -39,7 +41,7 @@ const InfoUser = () => {
             </View>
             <View style={styles.groupInfo}>
                 <View style={styles.groupName}>
-                    <Text style={styles.name}>Joshua Edwards, 29</Text>
+                    <Text style={styles.name}>{user.name}, 29</Text>
                     <IconShield name="shield-checkmark-sharp" size={15} style={{ paddingLeft: 5 }} color={'gray'} />
                 </View>
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('EditProfile')}>

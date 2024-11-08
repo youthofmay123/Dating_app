@@ -2,10 +2,14 @@ import { useState } from 'react';
 import { TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Button } from 'react-native-elements';
+import { useDispatch } from 'react-redux';
 function Login() {
     const navigation = useNavigation();
-    const [name, setName] = useState('');
+    const dispatch = useDispatch();
+    const [name, setNameInput] = useState('');
+
     const handleClick = () => {
+        dispatch(setName(name));
         navigation.navigate('Home');
     };
     return (
@@ -15,7 +19,7 @@ function Login() {
                 value={name}
                 placeholder="Name input..."
                 onChange={(e) => {
-                    setName(e.target.value);
+                    setNameInput(e.target.value);
                 }}
                 style={{ borderWidth: 1, padding: 10, minWidth: 250, borderRadius: 10 }}
             />

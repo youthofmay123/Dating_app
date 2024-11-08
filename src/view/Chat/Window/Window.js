@@ -9,34 +9,34 @@ import { useState, useEffect, useRef } from 'react';
 const Window = () => {
     const navigation = useNavigation();
 
-    const [inpMessage, setIptMessage] = useState('');
-    const [messages, setMessages] = useState([]);
-    const input = useRef(); // Tham chiếu tới input để focus
-    useEffect(() => {
-        const messageRef = ref(database, 'message');
-        onValue(messageRef, (snapshot) => {
-            let getMsg = [];
-            snapshot.forEach((childSnapshot) => {
-                getMsg.push(childSnapshot.val());
-            });
-            setMessages(getMsg);
-        });
-    }, []);
-    const handleSendMessage = () => {
-        if (inpMessage.trim()) {
-            push(ref(database, 'message'), {
-                name: name,
-                message: inpMessage,
-            })
-                .then(() => {
-                    setIptMessage('');
-                    input.current.focus(); // Focus lại vào input
-                })
-                .catch((error) => {
-                    console.error('Error sending message:', error);
-                });
-        }
-    };
+    // const [inpMessage, setIptMessage] = useState('');
+    // const [messages, setMessages] = useState([]);
+    // const input = useRef(); // Tham chiếu tới input để focus
+    // useEffect(() => {
+    // const messageRef = ref(database, 'message');
+    // onValue(messageRef, (snapshot) => {
+    // let getMsg = [];
+    // snapshot.forEach((childSnapshot) => {
+    // getMsg.push(childSnapshot.val());
+    // });
+    // setMessages(getMsg);
+    // });
+    // }, []);
+    // const handleSendMessage = () => {
+    // if (inpMessage.trim()) {
+    // push(ref(database, 'message'), {
+    // name: name,
+    // message: inpMessage,
+    // })
+    // .then(() => {
+    // setIptMessage('');
+    // input.current.focus(); // Focus lại vào input
+    // })
+    // .catch((error) => {
+    // console.error('Error sending message:', error);
+    // });
+    // }
+    // };
 
     return (
         <View style={styles.container}>

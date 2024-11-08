@@ -1,11 +1,13 @@
 import React from 'react';
-import { Text, View, SafeAreaView, FlatList } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView, Dimensions } from 'react-native';
 import styles from './styles';
 import Messenger from '../../components/Chat/Messenger';
 import Matches from '../../components/Chat/Matches';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Chat = () => {
+    const height = Dimensions.get('window').height;
+
     const data = [
         { id: '1', name: 'Maria White', lastSender: 'You', lastContent: 'Hello!', status: 'green' },
         { id: '2', name: 'Anna Fernandez', lastSender: 'Anna Fernandez', lastContent: "What's up!", status: 'grey' },
@@ -19,6 +21,10 @@ const Chat = () => {
         },
         { id: '5', name: 'Jennifer Brown', lastSender: 'You', lastContent: 'DÔ DIÊN!', status: 'yellow' },
         { id: '6', name: 'Jennifer Brown', lastSender: 'Jennifer Brown', lastContent: 'Thank you!', status: 'yellow' },
+        { id: '7', name: 'Jennifer Brown', lastSender: 'Jennifer Brown', lastContent: 'Thank you!', status: 'yellow' },
+        { id: '8', name: 'Jennifer Brown', lastSender: 'Jennifer Brown', lastContent: 'Thank you!', status: 'yellow' },
+        { id: '9', name: 'Jennifer Brown', lastSender: 'Jennifer Brown', lastContent: 'Thank you!', status: 'yellow' },
+        { id: '10', name: 'Jennifer Brown', lastSender: 'Jennifer Brown', lastContent: 'Thank you!', status: 'yellow' },
     ];
 
     return (
@@ -31,14 +37,11 @@ const Chat = () => {
                 </View>
                 <Icon name="filter-list" size={25} />
             </View>
-            <View style={{ height: 300 }}>
-                <FlatList
-                    showsVerticalScrollIndicator={true}
-                    data={data}
-                    keyExtractor={(item) => item.id}
-                    renderItem={({ item }) => <Messenger {...item} />}
-                />
-            </View>
+            <ScrollView style={{ height: height * 0.6 }}>
+                {data.map((item) => (
+                    <Messenger item={item} />
+                ))}
+            </ScrollView>
         </SafeAreaView>
     );
 };

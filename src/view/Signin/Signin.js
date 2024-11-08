@@ -8,8 +8,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Signin = ({ navigation }) => {
     const [request, response, promptAsync] = Google.useAuthRequest({
-        clientId: '522644652775-61s8codphivbkm74jgoihk00cojp7fd9.apps.googleusercontent.com', // ID OAuth từ Google
-        redirectUri: 'https://auth.expo.io/@huy-nguyen/your-app-slug',
+        clientId: '522644652775-q2if4h3bpqhvbk650lhf0k2ik5nk9nj3.apps.googleusercontent.com', // ID OAuth từ Google
+        redirectUri: 'https://auth.expo.io/@lamenecon/dating-app',
         extraParams: { prompt: 'consent' }, // Yêu cầu đồng ý mỗi khi đăng nhập
     });
 
