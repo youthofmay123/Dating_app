@@ -4,39 +4,42 @@ import { Ionicons, AntDesign, Entypo, Feather, FontAwesome, MaterialIcons } from
 import styles from './styles';
 import color from '../../../components/color/color';
 import { useNavigation } from '@react-navigation/native';
-import { database, ref, push, onValue } from '../../../firebase/config';
+import { database, collection, addDoc, onSnapshot, query, orderBy } from '../../../firebase/config';
 import { useState, useEffect, useRef } from 'react';
 const Window = () => {
     const navigation = useNavigation();
 
-    // const [inpMessage, setIptMessage] = useState('');
-    // const [messages, setMessages] = useState([]);
-    // const input = useRef(); // Tham chiếu tới input để focus
-    // useEffect(() => {
-    // const messageRef = ref(database, 'message');
-    // onValue(messageRef, (snapshot) => {
-    // let getMsg = [];
-    // snapshot.forEach((childSnapshot) => {
-    // getMsg.push(childSnapshot.val());
-    // });
-    // setMessages(getMsg);
-    // });
-    // }, []);
-    // const handleSendMessage = () => {
-    // if (inpMessage.trim()) {
-    // push(ref(database, 'message'), {
-    // name: name,
-    // message: inpMessage,
-    // })
-    // .then(() => {
-    // setIptMessage('');
-    // input.current.focus(); // Focus lại vào input
-    // })
-    // .catch((error) => {
-    // console.error('Error sending message:', error);
-    // });
-    // }
-    // };
+    const [inputMessage, setInputMessage] = useState('');
+    const [messages, setMessages] = useState([]);
+    const input = useRef(); // Tham chiếu tới input để focus
+    useEffect(() => {
+        const messagesRef = collection(database, 'messages');
+        const unsubscribe = onSnapshot(
+            query(messagesRef, orderBy('createdAt')), // Sắp xếp theo trường 'createdAt'
+            (snapshot) => {
+                let getMsg = [];
+                snapshot.forEach((doc) => {
+                    getMsg.push(doc.data());
+                });
+                setMessages(getMsg); // Cập nhật danh sách tin nhắn
+            },
+        );
+        return () => unsubscribe();
+    }, []);
+    const handleSendMessage = async () => {
+        if (inputMessage.trim()) {
+            try {
+                await addDoc(collection(database, 'messages'), {
+                    message: inputMessage,
+                    createdAt: new Date(),
+                });
+                setInputMessage(''); // Reset input message after sending
+                input.current.focus(); // Focus lại vào input
+            } catch (error) {
+                console.error('Error sending message:', error);
+            }
+        }
+    };
 
     return (
         <View style={styles.container}>
@@ -82,50 +85,33 @@ const Window = () => {
             </View>
 
             <ScrollView style={styles.messageContainer}>
-                <Text style={styles.dateLabel}>Today</Text>
-                <View style={styles.messageBubbleOfMe}>
-                    <Text style={styles.timeLabel}>08:42 PM</Text>
-                    <Text style={styles.messageText}>Hi there!</Text>
-                </View>
-                <View style={styles.messageBubbleOfMe}>
-                    <Text style={styles.timeLabel}>08:42 PM</Text>
-                    <Text style={styles.messageText}>Hi there!</Text>
-                </View>
-                <View style={styles.messageBubbleOfYou}>
-                    <Text style={styles.timeLabel}>08:42 PM</Text>
-                    <Text style={styles.messageText}>Hi thereasdddddddddddddddddddddddddddd!</Text>
-                </View>
-                <View style={styles.messageBubbleOfMe}>
-                    <Text style={styles.timeLabel}>08:42 PM</Text>
-                    <Text style={styles.messageText}>Hi there!</Text>
-                </View>
-                <View style={styles.messageBubbleOfYou}>
-                    <Text style={styles.timeLabel}>08:42 PM</Text>
-                    <Text style={styles.messageText}>Hi thereasdddddddddddddddddddddddddddd!</Text>
-                </View>
-
-                <View style={styles.messageBubbleOfMe}>
-                    <Text style={styles.timeLabel}>08:42 PM</Text>
-                    <Text style={styles.messageText}>Hi there!</Text>
-                </View>
-                <View style={styles.messageBubbleOfYou}>
-                    <Text style={styles.timeLabel}>08:42 PM</Text>
-                    <Text style={styles.messageText}>Hi thereasdddddddddddddddddddddddddddd!</Text>
-                </View>
-
-                <View style={styles.messageBubbleOfMe}>
-                    <Text style={styles.timeLabel}>08:42 PM</Text>
-                    <Text style={styles.messageText}>Hi there!</Text>
-                </View>
-                <View style={styles.messageBubbleOfYou}>
-                    <Text style={styles.timeLabel}>08:42 PM</Text>
-                    <Text style={styles.messageText}>Hi thereasdddddddddddddddddddddddddddd!</Text>
-                </View>
+                {messages.map((msg, index) => (
+                    <View key={index} style={styles.messageBubbleOfMe}>
+                        <Text style={styles.timeLabel}>
+                            {msg.createdAt
+                                ? new Date(msg.createdAt.seconds * 1000).toLocaleTimeString([], {
+                                      hour: '2-digit',
+                                      minute: '2-digit',
+                                      hour12: true,
+                                  })
+                                : ''}
+                        </Text>
+                        <Text style={styles.messageText}>{msg.message}</Text>
+                    </View>
+                ))}
             </ScrollView>
 
             <View>
                 <View style={styles.inputContainer}>
-                    <TextInput placeholder="Type a message..." style={styles.input} />
+                    <TextInput
+                        placeholder="Type a message..."
+                        ref={input}
+                        style={styles.input}
+                        value={inputMessage} // Bind the value to state
+                        onChangeText={(text) => {
+                            setInputMessage(text);
+                        }}
+                    />
                     <TouchableOpacity>
                         <FontAwesome name="smile-o" size={20} color="teal" />
                     </TouchableOpacity>
@@ -150,7 +136,7 @@ const Window = () => {
                         </TouchableOpacity>
                     </View>
                     <TouchableOpacity>
-                        <FontAwesome name="send-o" size={20} color={color.primary} />
+                        <FontAwesome name="send-o" size={20} color={color.primary} onPress={handleSendMessage} />
                     </TouchableOpacity>
                 </View>
             </View>

@@ -17,14 +17,14 @@ const InfoUser = () => {
     const strokeWidth = 8;
     const circumference = 2 * Math.PI * radius;
     const progressOffset = circumference - circumference * progress;
-    const user = useSelector((state) => state.user);
+    const user = useSelector((state) => state.user.currentUser);
 
     return (
         <SafeAreaView style={styles.component}>
             <View style={styles.groupAvatar}>
                 <Svg height="120" width="120" style={styles.percent}>
                     <Circle stroke="#e6e6e6" fill="none" cx="60" cy="60" r={radius} strokeWidth={strokeWidth} />
-                    <Image source={require('../../../images/Frog.png')} style={styles.avatar} />
+                    <Image source={{ uri: user.photos[0].url }} style={styles.avatar} />
                     <Circle
                         stroke={color.primary}
                         fill="none"

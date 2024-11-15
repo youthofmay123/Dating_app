@@ -1961,6 +1961,19 @@
   resolved "https://registry.npmjs.org/@firebase/firestore-types/-/firestore-types-3.0.2.tgz"
   integrity sha512-wp1A+t5rI2Qc/2q7r2ZpjUXkRVPtGMd6zCLsiWurjsQpqPgFin3AhNibKcIzoF2rnToNa/XYtyWXuifjOOwDgg==
 
+"@firebase/firestore@^4.7.4", "@firebase/firestore@4.7.4":
+  version "4.7.4"
+  resolved "https://registry.npmjs.org/@firebase/firestore/-/firestore-4.7.4.tgz"
+  integrity sha512-K2nq4w+NF8J1waGawY5OHLawP/Aw5CYxyDstVv1NZemGPcM3U+LZ9EPaXr1PatYIrPA7fS4DxZoWcbB0aGJ8Zg==
+  dependencies:
+    "@firebase/component" "0.6.10"
+    "@firebase/logger" "0.4.3"
+    "@firebase/util" "1.10.1"
+    "@firebase/webchannel-wrapper" "1.0.2"
+    "@grpc/grpc-js" "~1.9.0"
+    "@grpc/proto-loader" "^0.7.8"
+    tslib "^2.1.0"
+
 "@firebase/firestore@4.7.2":
   version "4.7.2"
   resolved "https://registry.npmjs.org/@firebase/firestore/-/firestore-4.7.2.tgz"
@@ -1974,19 +1987,6 @@
     "@grpc/proto-loader" "^0.7.8"
     tslib "^2.1.0"
     undici "6.19.7"
-
-"@firebase/firestore@4.7.4":
-  version "4.7.4"
-  resolved "https://registry.npmjs.org/@firebase/firestore/-/firestore-4.7.4.tgz"
-  integrity sha512-K2nq4w+NF8J1waGawY5OHLawP/Aw5CYxyDstVv1NZemGPcM3U+LZ9EPaXr1PatYIrPA7fS4DxZoWcbB0aGJ8Zg==
-  dependencies:
-    "@firebase/component" "0.6.10"
-    "@firebase/logger" "0.4.3"
-    "@firebase/util" "1.10.1"
-    "@firebase/webchannel-wrapper" "1.0.2"
-    "@grpc/grpc-js" "~1.9.0"
-    "@grpc/proto-loader" "^0.7.8"
-    tslib "^2.1.0"
 
 "@firebase/functions-compat@0.3.14":
   version "0.3.14"

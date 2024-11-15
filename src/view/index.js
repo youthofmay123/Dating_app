@@ -22,6 +22,7 @@ import AuthProvider from '../Context/AuthProvider';
 import Login from '../components/Login/Login';
 import { Provider } from 'react-redux';
 import store from '../redux/store';
+import Register from '../components/Register/Register';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator(); // Sử dụng BottomTabNavigator
@@ -114,6 +115,7 @@ function RootComponent() {
                     />
                     <Stack.Screen name="Window" component={Window} />
                     <Stack.Screen name="Login" component={Login} />
+                    <Stack.Screen name="Register" component={Register} />
                 </Stack.Navigator>
             </NavigationContainer>
         </Provider>

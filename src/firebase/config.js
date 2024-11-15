@@ -1,5 +1,5 @@
-import { initializeApp, getApps } from 'firebase/app';
-import Constants from 'expo-constants';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, where, getDocs } from 'firebase/firestore';
 const firebaseConfig = {
     apiKey: 'AIzaSyAgugjzmY2rIWQAiNJjZuK_59OY82fuX-k',
     authDomain: 'datingapp-d4a03.firebaseapp.com',
@@ -10,9 +10,11 @@ const firebaseConfig = {
     measurementId: 'G-JWMGH26CP0',
 };
 
+const app = initializeApp(firebaseConfig);
+
 export const expoClientId = '522644652775-q2if4h3bpqhvbk650lhf0k2ik5nk9nj3.apps.googleusercontent.com';
 export const iosClientId = '22644652775-3lt6eou68f2u0risvd50atud918culld.apps.googleusercontent.com';
 export const androidClientId = '522644652775-gpkbcfp0u6nhtfc658ihvat6o27kuirs.apps.googleusercontent.com';
 // Initialize Firebase
-
-export const app = initializeApp(firebaseConfig);
+const database = getFirestore(app);
+export { database, collection, addDoc, onSnapshot, query, orderBy, where, getDocs };

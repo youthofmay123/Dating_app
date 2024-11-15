@@ -4,9 +4,16 @@ import styles from './styles';
 import Messenger from '../../components/Chat/Messenger';
 import Matches from '../../components/Chat/Matches';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import userDetail from '../../constants/userDetail';
 
 const Chat = () => {
     const height = Dimensions.get('window').height;
+    const [selectedUser, setSelectedUser] = useState();
+
+    const currentUser = useSelector((state) => state.user.currentUser);
+    const users = userDetail.filter((user) => user.id !== currentUser?.id);
 
     const data = [
         { id: '1', name: 'Maria White', lastSender: 'You', lastContent: 'Hello!', status: 'green' },
@@ -38,8 +45,8 @@ const Chat = () => {
                 <Icon name="filter-list" size={25} />
             </View>
             <ScrollView style={{ height: height * 0.6 }}>
-                {data.map((item) => (
-                    <Messenger item={item} />
+                {users.map((item, index) => (
+                    <Messenger item={item} key={index} />
                 ))}
             </ScrollView>
         </SafeAreaView>

@@ -5,8 +5,10 @@ import { Button } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
 import datas from '../../constants/userDetail';
 import { setCurrentUser } from '../../redux/userSlice';
-import { database, collection, getDocs, query, where } from '../../firebase/config';
-function Login() {
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { database, collection, addDoc, query, where, getDocs } from '../../firebase/config';
+
+function Register() {
     const navigation = useNavigation();
     const dispatch = useDispatch();
     const [userName, setUserName] = useState('');
@@ -14,30 +16,40 @@ function Login() {
 
     const handleClick = async () => {
         try {
-            // Tạo query Firestore để tìm kiếm user phù hợp
-            const usersRef = collection(database, 'users');
-            const q = query(usersRef, where('user_name', '==', userName), where('password', '==', password));
-            const querySnapshot = await getDocs(q);
+            // Kiểm tra xem người dùng đã tồn tại trong Firestore chưa
+            const userRef = collection(database, 'users');
+            const userQuery = query(userRef, where('username', '==', userName));
+            const snapshot = await getDocs(userQuery);
 
-            if (!querySnapshot.empty) {
-                // Lấy user đầu tiên từ query
-                const user = querySnapshot.docs[0].data();
-                dispatch(setCurrentUser(user));
-                alert(`Xin chào ${user.name}`);
-                navigation.navigate('Home');
+            if (!snapshot.empty) {
+                alert('Tên người dùng đã tồn tại');
             } else {
-                alert('Tên đăng nhập hoặc mật khẩu không đúng');
+                // Đăng ký người dùng với Firebase Authentication
+                const auth = getAuth();
+                const userCredential = await createUserWithEmailAndPassword(auth, userName, password);
+
+                // Lưu thông tin người dùng vào Firestore
+                await addDoc(userRef, {
+                    username: userName,
+                    password: password, // Lưu mật khẩu là không an toàn, nên mã hóa mật khẩu trước khi lưu
+                });
+
+                // Lưu thông tin người dùng vào Redux
+                dispatch(setCurrentUser(userCredential.user));
+
+                alert('Đăng ký thành công');
+                navigation.navigate('Login');
             }
         } catch (error) {
-            console.error('Error fetching user data: ', error);
-            alert('Đã xảy ra lỗi khi đăng nhập');
+            console.error(error);
+            alert('Đã xảy ra lỗi, vui lòng thử lại');
         }
     };
 
     return (
         <View style={{ justifyContent: 'center', alignItems: 'center', height: '100%' }}>
             <View>
-                <Text style={{ fontSize: 16, fontWeight: 'bold' }}>LOGIN</Text>
+                <Text style={{ fontSize: 16, fontWeight: 'bold' }}>REGISTER</Text>
             </View>
             <TextInput
                 type="text"
@@ -60,12 +72,11 @@ function Login() {
                 }}
                 style={{ borderWidth: 1, padding: 10, minWidth: 250, borderRadius: 10, margin: 10 }}
             />
-
             <View style={{ flexDirection: 'row' }}>
-                <Button onPress={handleClick} title={'Login'} buttonStyle={{ padding: 10, margin: 10 }} />
+                <Button onPress={handleClick} title={'Register'} buttonStyle={{ padding: 10, margin: 10 }} />
                 <Button
-                    onPress={() => navigation.navigate('Register')}
-                    title={'Register'}
+                    onPress={() => navigation.navigate('Login')}
+                    title={'Login'}
                     buttonStyle={{ padding: 10, margin: 10 }}
                 />
             </View>
@@ -73,4 +84,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Register;

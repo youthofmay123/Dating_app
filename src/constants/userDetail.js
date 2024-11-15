@@ -1,20 +1,22 @@
 const userDetail = [
     {
         id: 1, // Unique identifier for the user
+        user_name: 'user1',
+        password: 'user1',
         name: 'Jodshua Edwards',
         age: 29,
         profile_completion: 45,
         photos: [
             {
-                url: require('../assets/image/user/Jodshua_Edwards.jpg'),
+                url: 'https://i.ibb.co/Wkn6jdg/Benjamin-Harris.jpg',
                 main: true,
             },
             {
-                url: require('../assets/image/user/Jodshua_Edwards.jpg'),
+                url: 'https://i.ibb.co/Wkn6jdg/Benjamin-Harris.jpg',
                 main: false,
             },
             {
-                url: require('../assets/image/user/Jodshua_Edwards.jpg'),
+                url: 'https://i.ibb.co/Wkn6jdg/Benjamin-Harris.jpg',
                 main: false,
             },
         ],
@@ -49,20 +51,22 @@ const userDetail = [
     },
     {
         id: 2, // Unique identifier for the user
+        user_name: 'user2',
+        password: 'user2',
         name: 'Daniel Williams',
         age: 20,
         profile_completion: 45,
         photos: [
             {
-                url: require('../assets/image/user/Daniel_Williams.jpg'),
+                url: 'https://i.ibb.co/WzNQQCx/anastasia-sincere-fe-J7qw-om-G0-unsplash.jpg',
                 main: true,
             },
             {
-                url: require('../assets/image/user/Daniel_Williams.jpg'),
+                url: 'https://i.ibb.co/WzNQQCx/anastasia-sincere-fe-J7qw-om-G0-unsplash.jpg',
                 main: false,
             },
             {
-                url: require('../assets/image/user/Daniel_Williams.jpg'),
+                url: 'https://i.ibb.co/WzNQQCx/anastasia-sincere-fe-J7qw-om-G0-unsplash.jpg',
                 main: false,
             },
         ],
@@ -97,20 +101,22 @@ const userDetail = [
     },
     {
         id: 3, // Unique identifier for the user
+        user_name: 'user3',
+        password: 'user3',
         name: 'Andrew Smith',
         age: 31,
         profile_completion: 45,
         photos: [
             {
-                url: require('../assets/image/user/Andrew_Smith.jpg'),
+                url: 'https://i.ibb.co/Dr0hh30/Andrew-Smith.jpg',
                 main: true,
             },
             {
-                url: require('../assets/image/user/Andrew_Smith.jpg'),
+                url: 'https://i.ibb.co/Dr0hh30/Andrew-Smith.jpg',
                 main: false,
             },
             {
-                url: require('../assets/image/user/Andrew_Smith.jpg'),
+                url: 'https://i.ibb.co/Dr0hh30/Andrew-Smith.jpg',
                 main: false,
             },
         ],
@@ -145,20 +151,72 @@ const userDetail = [
     },
     {
         id: 4, // Unique identifier for the user
+        user_name: 'user4',
+        password: 'user4',
         name: 'Benjamin Harris',
         age: 45,
         profile_completion: 45,
         photos: [
             {
-                url: require('../assets/image/user/Benjamin_Harris.jpg'),
+                url: 'https://i.ibb.co/8PTkLhr/sorin-sirbu-3i-I0m-ADqho-unsplash.jpg',
                 main: true,
             },
             {
-                url: require('../assets/image/user/Benjamin_Harris.jpg'),
+                url: 'https://i.ibb.co/8PTkLhr/sorin-sirbu-3i-I0m-ADqho-unsplash.jpg',
                 main: false,
             },
             {
-                url: require('../assets/image/user/Benjamin_Harris.jpg'),
+                url: 'https://i.ibb.co/8PTkLhr/sorin-sirbu-3i-I0m-ADqho-unsplash.jpg',
+                main: false,
+            },
+        ],
+        about_me:
+            'It would be wonderful to meet someone who appreciates the arts and enjoys exploring the vibrant culture of the city. I value open-mindedness, good communication, and a shared passion for classical music and fine arts. Also, mother of 2 cats ;)',
+        details: {
+            occupation: 'Software Engineer at Tech',
+            gender_pronouns: {
+                identity: 'Male',
+                pronouns: 'he/ him/ his',
+            },
+            education: 'PhD in Computer Science',
+            location: 'NV 89104',
+            height: '6\'0"',
+            smoking: 'Non-smoker',
+            drinking: 'Rarely',
+            pets: 'Dog lover',
+            children: 'One child',
+            zodiac_sign: 'Capricorn',
+            religion: 'Christian',
+            salary: '$120,000',
+            marital_status: 'Divorced',
+            favorite_color: 'Black',
+        },
+        interests: ['Sci-fi movies', 'Coffee brewing', 'Trekking'],
+        languages: ['English', 'Finnish'],
+        linked_accounts: {
+            instagram: null,
+            facebook: null,
+            twitter: null,
+        },
+    },
+    {
+        id: 4, // Unique identifier for the user
+        user_name: 'user4',
+        password: 'user4',
+        name: 'Benjamin Harris',
+        age: 45,
+        profile_completion: 45,
+        photos: [
+            {
+                url: 'https://i.ibb.co/16t749T/Jodshua-Edwards.jpg',
+                main: true,
+            },
+            {
+                url: 'https://i.ibb.co/16t749T/Jodshua-Edwards.jpg',
+                main: false,
+            },
+            {
+                url: 'https://i.ibb.co/16t749T/Jodshua-Edwards.jpg',
                 main: false,
             },
         ],

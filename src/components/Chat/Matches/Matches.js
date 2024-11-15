@@ -1,16 +1,34 @@
 import { FlatList, Image, Text, View } from 'react-native';
 import styles from './styles';
 import Item from '../Item';
+import { useSelector } from 'react-redux';
+import userDetail from '../../../constants/userDetail';
+import { database, collection, getDocs, query, where } from '../../../firebase/config';
+import { useEffect, useState } from 'react';
 
 const Matches = () => {
-    const data = [
-        { id: '1', name: 'Maria White', avatar: require('../../../images/Cat.png'), status: 'green' },
-        { id: '2', name: 'Anna Fernandez', avatar: require('../../../images/Cat.png'), status: 'grey' },
-        { id: '3', name: 'Jennifer Brown', avatar: require('../../../images/Cat.png'), status: 'yellow' },
-        { id: '4', name: 'Jennifer Brown', avatar: require('../../../images/Cat.png'), status: 'yellow' },
-        { id: '5', name: 'Jennifer Brown', avatar: require('../../../images/Cat.png'), status: 'yellow' },
-        { id: '6', name: 'Jennifer Brown', avatar: require('../../../images/Cat.png'), status: 'yellow' },
-    ];
+    const currentUser = useSelector((state) => state.user.currentUser);
+    // const [users, setUsers] = useState([]);
+    const users = userDetail.filter((user) => user.id !== currentUser?.id);
+
+    // useEffect(() => {
+    // const fetchUsers = async () => {
+    // try {
+    // const usersRef = collection(database, 'users');
+    // const querySnapshot = await getDocs(usersRef);
+    //
+    // const usersList = querySnapshot.docs
+    // .map((doc) => ({ id: doc.id, ...doc.data() })) // Lấy dữ liệu thực tế từ mỗi tài liệu
+    // .filter((user) => user.id !== currentUser?.id); // Lọc user hiện tại ra khỏi danh sách
+    //
+    // setUsers(usersList);
+    // } catch (error) {
+    // console.error('Error fetching users: ', error);
+    // }
+    // };
+    //
+    // fetchUsers();
+    // }, []);
     return (
         <View style={styles.wrapper}>
             <View style={styles.titleGroup}>
@@ -18,9 +36,9 @@ const Matches = () => {
                 <Text>(7)</Text>
             </View>
             <FlatList
-                data={data}
+                data={users}
                 horizontal
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item) => item?.id}
                 renderItem={({ item }) => <MatchItem {...item} />}
                 showsHorizontalScrollIndicator={false}
             />
@@ -28,10 +46,10 @@ const Matches = () => {
     );
 };
 
-const MatchItem = ({ name, avatar, status }) => {
+const MatchItem = ({ name, photos, status }) => {
     return (
         <View style={styles.itemContainer}>
-            <Item avatar={avatar} status={status} size={60} />
+            <Item avatar={photos[0]?.url} status={status} size={60} />
             <Text style={styles.name}>{name}</Text>
         </View>
     );

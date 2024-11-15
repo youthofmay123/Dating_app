@@ -5,8 +5,8 @@ const Item = (props) => {
     const { avatar, status, size } = props;
     return (
         <View style={styles.avatarContainer}>
-            <Image source={avatar} style={[styles.avatar, { width: size, height: size }]} />
-            <View style={[styles.statusIndicator, { backgroundColor: status }]} />
+            <Image source={{ uri: avatar }} style={[styles.avatar, { width: size, height: size }]} />
+            <View style={[styles.statusIndicator, { backgroundColor: 'green' }]} />
         </View>
     );
 };

@@ -14,10 +14,6 @@ const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setName: (state, action) => {
-            state.name = action.payload;
-        },
-
         // Action để set người dùng hiện tại
         setCurrentUser: (state, action) => {
             state.currentUser = action.payload;
@@ -42,6 +38,5 @@ const userSlice = createSlice({
 });
 
 // Xuất ra actions và reducer
-export const { setCurrentUser, setAllUsers, addFavoriteUser, removeFavoriteUser } = userSlice.actions;
-export const { setName } = userSlice.actions;
+export const { setCurrentUser, setAllUsers, addFavoriteUser, removeFavoriteUser, setName } = userSlice.actions;
 export default userSlice.reducer;

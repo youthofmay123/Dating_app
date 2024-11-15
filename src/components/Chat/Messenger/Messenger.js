@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 const Messenger = ({ item }) => {
     const navigation = useNavigation();
+
     return (
         <TouchableOpacity
             style={styles.wrapper}
@@ -13,7 +14,7 @@ const Messenger = ({ item }) => {
             }}
         >
             <View style={styles.avatar}>
-                <Item avatar={require('../../../images/Cat.png')} status={item.status} size={45} />
+                <Item avatar={item.photos[0].url} status={item.status} size={45} />
             </View>
             <View style={styles.groupMess}>
                 <View style={styles.groupName}>
@@ -21,8 +22,8 @@ const Messenger = ({ item }) => {
                     <Text style={{ fontSize: 10, color: 'gray' }}>1 hour ago</Text>
                 </View>
                 <View style={styles.content}>
-                    <Text style={{ marginRight: 5 }}>{item.lastSender}:</Text>
-                    <Text numberOfLines={1}>{item.lastContent}</Text>
+                    <Text style={{ marginRight: 5 }}></Text>
+                    <Text numberOfLines={1}></Text>
                 </View>
             </View>
         </TouchableOpacity>

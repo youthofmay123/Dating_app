@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './Card.styles';
 const Card = ({ card }) => (
     <View activeOpacity={1} style={styles.card}>
-        <Image style={styles.image} source={card.photos[0].url} resizeMode="cover" />
+        <Image style={styles.image} source={{ uri: card.photos[0].url }} resizeMode="cover" />
 
         <View style={styles.photoDescriptionContainer}>
             <Text style={styles.text}>{`${card.name}, ${card.age}`}</Text>

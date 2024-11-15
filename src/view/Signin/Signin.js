@@ -64,8 +64,8 @@ const Signin = ({ navigation }) => {
                     style={[styles.button, styles.phoneButton]}
                     onPress={() => navigation.navigate('Login')}
                 >
-                    <Icon name="phone" size={20} color="#fff" />
-                    <Text style={styles.buttonText}>Use phone number</Text>
+                    <Icon name="user" size={20} color="#fff" />
+                    <Text style={styles.buttonText}>UserName/Password</Text>
                 </TouchableOpacity>
             </View>
 

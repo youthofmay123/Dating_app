@@ -39,16 +39,16 @@ const getIconAndColor = (key) => {
 
 const Profile = () => {
     // Lấy thông tin người dùng từ Redux
-    const user = useSelector((state) => state.user.currentUser);
+    const user = useSelector((state) => state.user?.currentUser);
     if (!user) {
         return <Text>No user data available</Text>; // Hiển thị nếu không có dữ liệu người dùng
     }
 
     // Lọc và tạo danh sách các chi tiết không null
-    const detailTags = Object.entries(user.details || {})
+    const detailTags = Object.entries(user?.details || {})
         .filter(([key, value]) => value !== null)
         .map(([key, value]) => {
-            const displayValue = typeof value === 'object' ? `${value.identity} (${value.pronouns})` : value;
+            const displayValue = typeof value === 'object' ? `${value?.identity} (${value?.pronouns})` : value;
             return { key, displayValue };
         });
 
