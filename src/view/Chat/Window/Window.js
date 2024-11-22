@@ -88,11 +88,11 @@ const Window = ({route }) => {
                     />
                     <View style={styles.userInfo}>
                         <Text style={styles.userName}>
-                            Ava Jones, 25 <Ionicons name="checkmark-circle" size={16} color="blue" />
+                            {user.name}, {user.age} <Ionicons name="checkmark-circle" size={16} color="blue" />
                         </Text>
-                        <Text style={styles.userPronouns}>she/ her/ hers</Text>
+                        <Text style={styles.userPronouns}>{user.details.gender_pronouns.pronouns}</Text>
                         <Text style={styles.userJob}>
-                            <Feather name="folder" size={15} color="gray" /> Business Analyst at Tech
+                            <Feather name="folder" size={15} color="gray" /> {user.details.occupation}
                         </Text>
                     </View>
                     <TouchableOpacity style={styles.profileButton}>
