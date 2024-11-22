@@ -1,5 +1,6 @@
 {
     "expo": {
+        "sdkVersion": "52.0.0",
         "name": "dating-app",
         "slug": "dating-app",
         "scheme": "dating-app",

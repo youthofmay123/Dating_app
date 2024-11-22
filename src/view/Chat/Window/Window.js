@@ -4,32 +4,49 @@ import { Ionicons, AntDesign, Entypo, Feather, FontAwesome, MaterialIcons } from
 import styles from './styles';
 import color from '../../../components/color/color';
 import { useNavigation } from '@react-navigation/native';
-import { database, collection, addDoc, onSnapshot, query, orderBy } from '../../../firebase/config';
+import { database, collection, addDoc, onSnapshot, query, orderBy, auth } from '../../../firebase/config';
 import { useState, useEffect, useRef } from 'react';
-const Window = () => {
+import { useSelector } from 'react-redux';
+const Window = ({route }) => {
+    const { user } = route.params;
+    const currentUser = useSelector((state) => state.user.currentUser);
     const navigation = useNavigation();
 
     const [inputMessage, setInputMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const input = useRef(); // Tham chiếu tới input để focus
     useEffect(() => {
-        const messagesRef = collection(database, 'messages');
-        const unsubscribe = onSnapshot(
-            query(messagesRef, orderBy('createdAt')), // Sắp xếp theo trường 'createdAt'
-            (snapshot) => {
-                let getMsg = [];
-                snapshot.forEach((doc) => {
-                    getMsg.push(doc.data());
-                });
-                setMessages(getMsg); // Cập nhật danh sách tin nhắn
-            },
-        );
-        return () => unsubscribe();
-    }, []);
+        if (!user) {
+            console.error('User not found');
+            return;
+        }
+        const chatRef = collection(database, `messages`);
+        const q = query(chatRef, orderBy('createdAt', 'asc'));
+        const unsubscribe = onSnapshot(q, (snapshot) => {
+            const fetchedMessages = snapshot.docs
+            .map((doc) => ({ id: doc.id, ...doc.data() }))
+            .filter(
+                (msg) =>
+                    (msg.senderId === currentUser.id && msg.receiverId === user.id) ||
+                    (msg.senderId === user.id && msg.receiverId === currentUser.id)
+            );
+            setMessages(fetchedMessages);
+        },
+        (error) => {
+            console.error('Error fetching messages:', error);
+            alert('Error loading messages. Please try again later.');
+        }
+    );
+        return unsubscribe;
+    }, [user]);
     const handleSendMessage = async () => {
         if (inputMessage.trim()) {
+            const chatRef = collection(database, `messages`);
+            
             try {
-                await addDoc(collection(database, 'messages'), {
+                await addDoc(chatRef, {
+                    senderId: currentUser.id, // Thay thế bằng ID của người dùng hiện tại
+                    receiverId: user.id,
                     message: inputMessage,
                     createdAt: new Date(),
                 });
@@ -66,7 +83,7 @@ const Window = () => {
                 </View>
                 <View style={styles.info}>
                     <Image
-                        source={require('../../../images/Cat.png')} // Replace with actual image URL or local image
+                        source={{ uri: user.photos[0].url }} // Replace with actual image URL or local image
                         style={styles.avatar}
                     />
                     <View style={styles.userInfo}>
@@ -86,7 +103,7 @@ const Window = () => {
 
             <ScrollView style={styles.messageContainer}>
                 {messages.map((msg, index) => (
-                    <View key={index} style={styles.messageBubbleOfMe}>
+                    <View key={index} style={msg.senderId === currentUser.id ? styles.messageBubbleOfMe : styles.messageBubbleOfYou}>
                         <Text style={styles.timeLabel}>
                             {msg.createdAt
                                 ? new Date(msg.createdAt.seconds * 1000).toLocaleTimeString([], {

@@ -10,7 +10,7 @@ const Messenger = ({ item }) => {
         <TouchableOpacity
             style={styles.wrapper}
             onPress={() => {
-                navigation.navigate('Window');
+                navigation.navigate('Window', { user: item });
             }}
         >
             <View style={styles.avatar}>

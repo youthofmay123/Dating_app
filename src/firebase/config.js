@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app';
+import { getAuth } from "firebase/auth";
 import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, where, getDocs } from 'firebase/firestore';
 const firebaseConfig = {
     apiKey: 'AIzaSyAgugjzmY2rIWQAiNJjZuK_59OY82fuX-k',
@@ -11,10 +12,10 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
+const auth = getAuth(app); 
 export const expoClientId = '522644652775-q2if4h3bpqhvbk650lhf0k2ik5nk9nj3.apps.googleusercontent.com';
 export const iosClientId = '22644652775-3lt6eou68f2u0risvd50atud918culld.apps.googleusercontent.com';
 export const androidClientId = '522644652775-gpkbcfp0u6nhtfc658ihvat6o27kuirs.apps.googleusercontent.com';
 // Initialize Firebase
 const database = getFirestore(app);
-export { database, collection, addDoc, onSnapshot, query, orderBy, where, getDocs };
+export { database, collection, addDoc, onSnapshot, query, orderBy, where, getDocs,auth };

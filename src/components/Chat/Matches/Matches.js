@@ -9,26 +9,28 @@ import { useEffect, useState } from 'react';
 const Matches = () => {
     const currentUser = useSelector((state) => state.user.currentUser);
     // const [users, setUsers] = useState([]);
-    const users = userDetail.filter((user) => user.id !== currentUser?.id);
+    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+    
+    const fetchUsers = async () => {
+        try {
+            const usersRef = collection(database, "users");
+            const snapshot = await getDocs(usersRef);
+            const usersData = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+            const filteredUsers = usersData.filter((user) => user.id !== currentUser.id);
+            setUsers(filteredUsers); // Lưu người dùng vào state
+        } catch (error) {
+            console.error("Lỗi khi lấy người dùng:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-    // useEffect(() => {
-    // const fetchUsers = async () => {
-    // try {
-    // const usersRef = collection(database, 'users');
-    // const querySnapshot = await getDocs(usersRef);
-    //
-    // const usersList = querySnapshot.docs
-    // .map((doc) => ({ id: doc.id, ...doc.data() })) // Lấy dữ liệu thực tế từ mỗi tài liệu
-    // .filter((user) => user.id !== currentUser?.id); // Lọc user hiện tại ra khỏi danh sách
-    //
-    // setUsers(usersList);
-    // } catch (error) {
-    // console.error('Error fetching users: ', error);
-    // }
-    // };
-    //
-    // fetchUsers();
-    // }, []);
+    useEffect(() => {
+        fetchUsers();
+    }, []);
+
+    
     return (
         <View style={styles.wrapper}>
             <View style={styles.titleGroup}>
@@ -37,6 +39,7 @@ const Matches = () => {
             </View>
             <FlatList
                 data={users}
+                key={users?.id}
                 horizontal
                 keyExtractor={(item) => item?.id}
                 renderItem={({ item }) => <MatchItem {...item} />}
