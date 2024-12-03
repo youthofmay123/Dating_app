@@ -23,6 +23,7 @@ import Login from '../components/Login/Login';
 import { Provider } from 'react-redux';
 import store from '../redux/store';
 import Register from '../components/Register/Register';
+import ChatBot from './ChatBot/ChatBot';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator(); // Sử dụng BottomTabNavigator
@@ -46,8 +47,11 @@ const TabNavigator = () => (
                     case 'Chat':
                         iconName = 'send-o';
                         break;
+                    case 'ChatBot':
+                        iconName = 'connectdevelop';
+                        break;
                     default:
-                        iconName = 'send-o';
+                        iconName = 'comments';
                         break;
                 }
 
@@ -66,6 +70,9 @@ const TabNavigator = () => (
                 if (route.name === 'Chat') {
                     return <Header3 />;
                 }
+                // if (route.name === 'ChatBot') {
+                //     return <Header3 />;
+                // }
             },
             headerStyle: {
                 height: 85,
@@ -79,6 +86,7 @@ const TabNavigator = () => (
         <Tab.Screen name="Match" component={Match} />
         <Tab.Screen name="Notify" component={Notify} />
         <Tab.Screen name="Chat" component={Chat} />
+        {/* <Tab.Screen name="ChatBot" component={ChatBot} /> */}
     </Tab.Navigator>
 );
 

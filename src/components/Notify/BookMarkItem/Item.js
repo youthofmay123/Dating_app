@@ -10,7 +10,7 @@ const Item = ({ photo, name, pronouns, occupation }) => {
     return (
         <View style={[styles.container]}>
             <View style={styles.avatar}>
-                <Image style={styles.img} source={photo} />
+                <Image style={styles.img} source={{uri:photo}} />
             </View>
             <View style={styles.infor}>
                 <Text style={styles.name}>{name}</Text>

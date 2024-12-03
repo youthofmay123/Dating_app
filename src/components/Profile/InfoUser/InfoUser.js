@@ -5,8 +5,6 @@ import IconShield from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import Svg, { Circle } from 'react-native-svg';
 import color from '../../color/color';
-import { useEffect, useRef } from 'react';
-import { Animated } from 'react-native';
 import { useSelector } from 'react-redux';
 
 const InfoUser = () => {

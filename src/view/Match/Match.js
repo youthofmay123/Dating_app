@@ -11,8 +11,9 @@ const Match = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const userDetail = useSelector((state) => state.user.allUsers);
     const selectedUser = useSelector((state) => state.user.currentUser);
+    const userDetail = useSelector((state) => state.user.allUsers).filter((user) => user.id !== selectedUser.id);
+
 
     const handleSwipedRight = () => {
         setIsModalVisible(true); // Show modal when swiped right
